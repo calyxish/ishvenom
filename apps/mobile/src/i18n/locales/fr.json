@@ -1,0 +1,35 @@
+{
+  "home": {
+    "tagline": "Triage hors ligne des morsures de serpent. Sans Internet. Sans GPU.",
+    "identifyButton": "Identifier un serpent",
+    "emergencyButton": "Premiers secours d'urgence",
+    "historyButton": "Historique",
+    "settingsButton": "Paramètres",
+    "disclaimer": "Cette application complète — ne remplace pas — les soins médicaux professionnels. En cas de morsure, consultez immédiatement un médecin."
+  },
+  "identify": {
+    "cameraPermission": "L'accès à la caméra est nécessaire pour identifier les serpents.",
+    "grantAccess": "Autoriser la caméra",
+    "wasBitten": "Une personne a été mordue",
+    "capture": "Photographier"
+  },
+  "result": {
+    "empty": "Aucun résultat pour le moment.",
+    "tryAgain": "Réessayer",
+    "identifyAnother": "Identifier un autre",
+    "done": "Terminer",
+    "latency": "vision {{vision}}ms · gemma {{gemma}}ms · total {{total}}ms"
+  },
+  "settings": {
+    "language": "LANGUE",
+    "sync": "SYNCHRONISATION",
+    "privacy": "CONFIDENTIALITÉ",
+    "privacyBody": "Aucune photo ni donnée personnelle ne quitte votre appareil. Seules les métadonnées anonymisées sont synchronisées.",
+    "forgetMe": "Oublier cet appareil",
+    "about": "À PROPOS"
+  },
+  "emergency": {
+    "title": "Urgence",
+    "subtitle": "Premiers secours en cas de morsure de serpent."
+  }
+}

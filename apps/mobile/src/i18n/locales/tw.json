@@ -1,0 +1,35 @@
+{
+  "home": {
+    "tagline": "Ɔwɔ ka ho mmoa a ɛnhia intanɛt.",
+    "identifyButton": "Hu ɔwɔ no",
+    "emergencyButton": "Prɛko pɛ mmoa",
+    "historyButton": "Abakɔsɛm",
+    "settingsButton": "Nhyehyɛe",
+    "disclaimer": "Saa app yi boa — ɛnsi — ayaresabea adwuma anan mu. Sɛ ɔwɔ aka obi a, kɔhwehwɛ mmoa ntɛm ara."
+  },
+  "identify": {
+    "cameraPermission": "Ɛsɛ sɛ wɔma kamera kwan ansa na yɛahu ɔwɔ no.",
+    "grantAccess": "Ma kamera kwan",
+    "wasBitten": "Ɔwɔ aka obi",
+    "capture": "Twa mfonini"
+  },
+  "result": {
+    "empty": "Biribiara nni hɔ seisei.",
+    "tryAgain": "Sɔ bio",
+    "identifyAnother": "Hu foforɔ",
+    "done": "Awie",
+    "latency": "vision {{vision}}ms · gemma {{gemma}}ms · nyinaa {{total}}ms"
+  },
+  "settings": {
+    "language": "KASA",
+    "sync": "NKITAHODI",
+    "privacy": "KOKOAM ASƐM",
+    "privacyBody": "Mfonini anaa wo ho nsɛm biara mfi wo fon so nkɔ baabiara.",
+    "forgetMe": "Werɛ firi saa fon yi",
+    "about": "FA HO"
+  },
+  "emergency": {
+    "title": "Prɛko pɛ",
+    "subtitle": "Ɔwɔ ka ho mmoa a ɛho hia."
+  }
+}
