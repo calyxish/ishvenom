@@ -1,3 +1,5 @@
 {
-  "framework": "nextjs"
+  "framework": "nextjs",
+  "buildCommand": "pnpm --filter @ishvenom/shared-types build && next build",
+  "installCommand": "pnpm install --frozen-lockfile"
 }
