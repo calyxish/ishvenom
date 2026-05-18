@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="IshVenom logo">
+  <defs>
+    <!-- Background: deep cyan-navy radial gradient, lighter at top-left for subtle depth -->
+    <radialGradient id="bgGrad" cx="38%" cy="32%" r="70%">
+      <stop offset="0%" stop-color="#061E38"/>
+      <stop offset="100%" stop-color="#030D1A"/>
+    </radialGradient>
+
+    <!-- Snake body: emerald gradient, darker at tail, brighter at head -->
+    <linearGradient id="snakeGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#047857"/>
+      <stop offset="55%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+
+    <!-- Clip to circle so head and tongue elements cannot overflow -->
+    <clipPath id="circle-clip">
+      <circle cx="200" cy="200" r="186"/>
+    </clipPath>
+  </defs>
+
+  <!-- ── Background ────────────────────────────────────────────────── -->
+  <circle cx="200" cy="200" r="190" fill="url(#bgGrad)"/>
+  <!-- Cyan accent ring ties badge to design system accent color -->
+  <circle cx="200" cy="200" r="186" fill="none" stroke="#0EA5E9" stroke-width="1.5" opacity="0.35"/>
+
+  <!-- ── Snake (clipped to badge circle) ──────────────────────────── -->
+  <g clip-path="url(#circle-clip)">
+
+    <!-- Drop shadow below body for lift -->
+    <path
+      d="M 88 312 C 42 268, 52 178, 125 158 C 198 138, 290 172, 314 98"
+      fill="none"
+      stroke="#011008"
+      stroke-width="32"
+      stroke-linecap="round"
+      opacity="0.55"
+    />
+
+    <!-- Body — thick S-curve; tail lower-left, neck upper-right -->
+    <path
+      d="M 88 308 C 44 264, 52 176, 124 156 C 196 136, 288 170, 312 96"
+      fill="none"
+      stroke="url(#snakeGrad)"
+      stroke-width="25"
+      stroke-linecap="round"
+    />
+
+    <!-- Dorsal highlight: thin lighter stripe along the top of the body -->
+    <path
+      d="M 88 308 C 44 264, 52 176, 124 156 C 196 136, 288 170, 312 96"
+      fill="none"
+      stroke="#6EE7B7"
+      stroke-width="9"
+      stroke-linecap="round"
+      opacity="0.18"
+    />
+
+    <!--
+      Head geometry
+      ─────────────
+      Body path ends at P=(312, 96).
+      Last control point CP=(288, 170).
+      Direction vector CP→P = (24, -74).  Length ≈ 77.8.
+      Unit forward: u = (0.308, -0.951).
+      Unit perpendicular (right of travel): p = (0.951, 0.308).
+
+      Tip   = P + 28·u = (320.6,  69.4) → (321, 69)
+      Left  = P − 16·p = (296.8,  91.1) → (297, 91)
+      Right = P + 16·p = (327.2, 100.9) → (327, 101)
+    -->
+
+    <!-- Head underside (slightly darker fill for a jaw shadow) -->
+    <polygon points="315,84 297,91 327,101" fill="#034d30" opacity="0.50"/>
+
+    <!-- Head main fill -->
+    <polygon points="321,69 297,91 327,101" fill="url(#snakeGrad)"/>
+
+    <!--
+      Eye
+      ───
+      1/3 from base-centre (312, 96) toward tip (321, 69):
+        (312 + 3, 96 − 9) = (315, 87)
+      Shift 4 units toward dorsal (−p direction):
+        (315 − 3.8, 87 − 1.2) ≈ (311, 86)
+    -->
+    <circle cx="311" cy="85" r="5.5" fill="#010C06"/>
+    <!-- Catchlight -->
+    <circle cx="312.5" cy="83.5" r="2" fill="#A7F3D0" opacity="0.65"/>
+
+    <!--
+      Tongue — forked, extending beyond tip (321, 69)
+      Root at tip; goes to fork point (325, 55), then splits
+    -->
+    <path
+      d="M 321 69 L 325 55 M 325 55 L 318 45 M 325 55 L 334 50"
+      fill="none"
+      stroke="#047857"
+      stroke-width="2.8"
+      stroke-linecap="round"
+    />
+
+  </g>
+
+  <!-- ── Subtle inner vignette to frame the composition ────────────── -->
+  <circle
+    cx="200" cy="200" r="190"
+    fill="none"
+    stroke="#030D1A"
+    stroke-width="12"
+    opacity="0.35"
+  />
+</svg>
