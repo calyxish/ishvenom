@@ -1,0 +1,342 @@
+{
+  "$schema": "./instruction.schema.json",
+  "language": "sw",
+  "version": "0.1.0-stub",
+  "source": "AUTO-GENERATED STUB from instructions.en.json. Every 'body' field is NEEDS_TRANSLATION and MUST be filled in by a fluent Swahili speaker with medical review before fine-tuning can proceed.",
+  "verification_status": "stub_needs_full_human_translation",
+  "medical_reviewer": null,
+  "last_reviewed_at": null,
+  "_instructions_to_translator": "For each instruction, translate the English 'title' and 'body' (shown in '_source_en') into Swahili. Preserve the 'id' and 'category' exactly. Do NOT invent medical content — translate faithfully. If a term has no equivalent in your language, use the closest safe paraphrase and note it in a '_translator_notes' field on that instruction.",
+  "instructions": [
+    {
+      "id": "prev-01",
+      "category": "prevention",
+      "severity": "general",
+      "title": "NEEDS_TRANSLATION",
+      "body": "NEEDS_TRANSLATION",
+      "_source_en": {
+        "title": "When snakes are most active",
+        "body": "Most African snakes are more active around dusk and early night, and after rain. Walk with extra care at these times, and always carry a light when leaving the house after dark."
+      }
+    },
+    {
+      "id": "prev-02",
+      "category": "prevention",
+      "severity": "general",
+      "title": "NEEDS_TRANSLATION",
+      "body": "NEEDS_TRANSLATION",
+      "_source_en": {
+        "title": "Where snakes hide",
+        "body": "Snakes shelter in tall grass, under stones, in piles of firewood, inside grain stores, and in holes. Do not reach into places you cannot see. Move firewood and stones with a long tool, not your hands."
+      }
+    },
+    {
+      "id": "prev-03",
+      "category": "prevention",
+      "severity": "general",
+      "title": "NEEDS_TRANSLATION",
+      "body": "NEEDS_TRANSLATION",
+      "_source_en": {
+        "title": "Footwear and clothing",
+        "body": "In snake country, wear closed shoes or boots and long trousers when walking through grass, farmland, or bush. Most bites happen on the foot and lower leg."
+      }
+    },
+    {
+      "id": "prev-04",
+      "category": "prevention",
+      "severity": "general",
+      "title": "NEEDS_TRANSLATION",
+      "body": "NEEDS_TRANSLATION",
+      "_source_en": {
+        "title": "Walking safely",
+        "body": "Watch the ground where you step. If you see a snake, stop, stay still, and back away slowly. Do not run, do not try to kill it, and do not step over it."
+      }
+    },
+    {
+      "id": "prev-05",
+      "category": "prevention",
+      "severity": "general",
+      "title": "NEEDS_TRANSLATION",
+      "body": "NEEDS_TRANSLATION",
+      "_source_en": {
+        "title": "Around the house at night",
+        "body": "Shake out shoes, clothes, and bedding before use. Keep sleeping areas clear of clutter. Use a bed net tucked under the mattress — this protects against both mosquitoes and snakes that enter at night."
+      }
+    },
+    {
+      "id": "id-01",
+      "category": "identification",
+      "severity": "general",
+      "title": "NEEDS_TRANSLATION",
+      "body": "NEEDS_TRANSLATION",
+      "_source_en": {
+        "title": "Safe identification",
+        "body": "Do not chase or try to catch a snake to identify it. If the snake is already dead, take a photo from a safe distance. If it is alive, do not approach — describe its size, colour, and pattern to the clinic instead."
+      }
+    },
+    {
+      "id": "id-02",
+      "category": "identification",
+      "severity": "moderate",
+      "title": "NEEDS_TRANSLATION",
+      "body": "NEEDS_TRANSLATION",
+      "_source_en": {
+        "title": "Recognising a bite",
+        "body": "Look for one or two puncture marks, scratches, or a curved row of tiny wounds. There may be little bleeding at first. Pain, swelling, and bruising usually begin within minutes in a serious bite."
+      }
+    },
+    {
+      "id": "id-03",
+      "category": "identification",
+      "severity": "general",
+      "title": "NEEDS_TRANSLATION",
+      "body": "NEEDS_TRANSLATION",
+      "_source_en": {
+        "title": "Dry bite recognition",
+        "body": "A snake can bite without injecting venom — this is a dry bite. It still needs medical review, because symptoms can be delayed. Do not assume a bite is dry just because swelling is slow to start."
+      }
+    },
+    {
+      "id": "id-04",
+      "category": "identification",
+      "severity": "severe",
+      "title": "NEEDS_TRANSLATION",
+      "body": "NEEDS_TRANSLATION",
+      "_source_en": {
+        "title": "Neurotoxic symptoms",
+        "body": "Watch for drooping eyelids, difficulty swallowing or speaking, muscle weakness, blurred vision, and trouble breathing. These point to a neurotoxic bite (mamba or cobra) and need emergency care immediately."
+      }
+    },
+    {
+      "id": "id-05",
+      "category": "identification",
+      "severity": "severe",
+      "title": "NEEDS_TRANSLATION",
+      "body": "NEEDS_TRANSLATION",
+      "_source_en": {
+        "title": "Bleeding and bruising symptoms",
+        "body": "Watch for bleeding from the gums, nose, or old wounds, blood in urine or stool, and large bruises that keep growing. These point to a viper bite (puff adder, carpet viper, boomslang) and need emergency care immediately."
+      }
+    },
+    {
+      "id": "resp-01",
+      "category": "immediate_response",
+      "severity": "critical",
+      "title": "NEEDS_TRANSLATION",
+      "body": "NEEDS_TRANSLATION",
+      "_source_en": {
+        "title": "Stay calm and move away",
+        "body": "Move the victim at least a few metres from where the bite happened, so the snake cannot strike again. Keep the person calm — panic makes the heart beat faster and spreads venom more quickly."
+      }
+    },
+    {
+      "id": "resp-02",
+      "category": "immediate_response",
+      "severity": "critical",
+      "title": "NEEDS_TRANSLATION",
+      "body": "NEEDS_TRANSLATION",
+      "_source_en": {
+        "title": "Remove tight items",
+        "body": "Take off rings, bracelets, watches, anklets, and tight clothing from the bitten limb right away. Swelling will come, and these items can cut off blood flow and cause lasting damage."
+      }
+    },
+    {
+      "id": "resp-03",
+      "category": "immediate_response",
+      "severity": "critical",
+      "title": "NEEDS_TRANSLATION",
+      "body": "NEEDS_TRANSLATION",
+      "_source_en": {
+        "title": "Immobilise the limb",
+        "body": "Keep the bitten arm or leg as still as possible. If you can, splint it with a stick or rolled cloth. Carry the person to transport — do not let them walk if the bite is on the leg."
+      }
+    },
+    {
+      "id": "resp-04",
+      "category": "immediate_response",
+      "severity": "moderate",
+      "title": "NEEDS_TRANSLATION",
+      "body": "NEEDS_TRANSLATION",
+      "_source_en": {
+        "title": "Clean gently",
+        "body": "Wipe the wound gently with clean water or soap if available. Do not scrub, do not apply any paste or herbs, and do not cover it with a tight bandage."
+      }
+    },
+    {
+      "id": "resp-05",
+      "category": "immediate_response",
+      "severity": "moderate",
+      "title": "NEEDS_TRANSLATION",
+      "body": "NEEDS_TRANSLATION",
+      "_source_en": {
+        "title": "Mark the swelling",
+        "body": "Use a pen or a piece of charcoal to draw a line at the edge of the swelling every 15 minutes. This helps the clinic judge how fast the venom is spreading."
+      }
+    },
+    {
+      "id": "donot-01",
+      "category": "do_not",
+      "severity": "critical",
+      "title": "NEEDS_TRANSLATION",
+      "body": "NEEDS_TRANSLATION",
+      "_source_en": {
+        "title": "Never cut the wound",
+        "body": "Do not cut the bite with a knife, razor, or blade. Cutting does not remove venom. It causes bleeding, infection, and permanent damage. This is one of the worst things you can do."
+      }
+    },
+    {
+      "id": "donot-02",
+      "category": "do_not",
+      "severity": "critical",
+      "title": "NEEDS_TRANSLATION",
+      "body": "NEEDS_TRANSLATION",
+      "_source_en": {
+        "title": "Never suck the wound",
+        "body": "Do not try to suck venom out with your mouth or with a suction device. It does not work, it puts the helper at risk, and it delays real treatment."
+      }
+    },
+    {
+      "id": "donot-03",
+      "category": "do_not",
+      "severity": "critical",
+      "title": "NEEDS_TRANSLATION",
+      "body": "NEEDS_TRANSLATION",
+      "_source_en": {
+        "title": "Never apply a tight tourniquet",
+        "body": "Do not tie a rope, cloth, or cord tightly around the limb to stop blood flow. A tight tourniquet can cause gangrene and amputation. If the bite is from a cobra or mamba, a broad, firm pressure bandage from fingers to shoulder may help — but only if someone trained shows you how."
+      }
+    },
+    {
+      "id": "donot-04",
+      "category": "do_not",
+      "severity": "critical",
+      "title": "NEEDS_TRANSLATION",
+      "body": "NEEDS_TRANSLATION",
+      "_source_en": {
+        "title": "Never apply ice or hot water",
+        "body": "Do not put ice on the bite. Do not put hot water, fire, or hot objects on the bite. Both damage tissue and do nothing to stop the venom."
+      }
+    },
+    {
+      "id": "donot-05",
+      "category": "do_not",
+      "severity": "critical",
+      "title": "NEEDS_TRANSLATION",
+      "body": "NEEDS_TRANSLATION",
+      "_source_en": {
+        "title": "No alcohol or stimulants",
+        "body": "Do not give the victim alcohol, coffee, energy drinks, or any stimulant. These speed up the heart and spread venom faster. Give clean water only if the person is fully awake and can swallow."
+      }
+    },
+    {
+      "id": "trans-01",
+      "category": "transport",
+      "severity": "critical",
+      "title": "NEEDS_TRANSLATION",
+      "body": "NEEDS_TRANSLATION",
+      "_source_en": {
+        "title": "Transport lying down",
+        "body": "Carry the victim lying flat, with the bitten limb slightly below the heart if possible. Take them to the nearest clinic or hospital as fast as you safely can. Do not let them walk."
+      }
+    },
+    {
+      "id": "trans-02",
+      "category": "transport",
+      "severity": "moderate",
+      "title": "NEEDS_TRANSLATION",
+      "body": "NEEDS_TRANSLATION",
+      "_source_en": {
+        "title": "What to tell the clinic",
+        "body": "Tell the clinic staff: when the bite happened, where on the body, what the snake looked like (if seen), what symptoms have appeared, and any first aid already given. Show them the photo if you have one."
+      }
+    },
+    {
+      "id": "trans-03",
+      "category": "transport",
+      "severity": "moderate",
+      "title": "NEEDS_TRANSLATION",
+      "body": "NEEDS_TRANSLATION",
+      "_source_en": {
+        "title": "Photograph the snake only if safe",
+        "body": "If the snake is already dead or far away, take a photo from a safe distance. Never risk a second bite to get a picture. A description of size, colour, and pattern is also useful."
+      }
+    },
+    {
+      "id": "trans-04",
+      "category": "transport",
+      "severity": "moderate",
+      "title": "NEEDS_TRANSLATION",
+      "body": "NEEDS_TRANSLATION",
+      "_source_en": {
+        "title": "Dead snakes must be bagged",
+        "body": "A dead snake can still bite by reflex for up to an hour. If you are bringing it to the clinic for identification, put it in a closed bag or container. Never carry it loose."
+      }
+    },
+    {
+      "id": "trans-05",
+      "category": "transport",
+      "severity": "severe",
+      "title": "NEEDS_TRANSLATION",
+      "body": "NEEDS_TRANSLATION",
+      "_source_en": {
+        "title": "Long transport times",
+        "body": "If the clinic is far, keep the person calm, lying down, and the limb still. Give small sips of water if they are awake. Watch their breathing closely. If breathing becomes difficult, keep the airway clear and move faster."
+      }
+    },
+    {
+      "id": "special-01",
+      "category": "special_case",
+      "severity": "critical",
+      "title": "NEEDS_TRANSLATION",
+      "body": "NEEDS_TRANSLATION",
+      "_source_en": {
+        "title": "Children bitten",
+        "body": "Children are at much higher risk because their bodies are smaller and venom reaches lethal doses faster. Treat every child bite as an emergency, even if symptoms seem mild at first. Go to the clinic without delay."
+      }
+    },
+    {
+      "id": "special-02",
+      "category": "special_case",
+      "severity": "critical",
+      "title": "NEEDS_TRANSLATION",
+      "body": "NEEDS_TRANSLATION",
+      "_source_en": {
+        "title": "Pregnant women",
+        "body": "Pregnant women bitten by a snake need emergency care immediately, for both mother and baby. Some snake venoms can cause miscarriage or harm the unborn child. Do not wait for symptoms to worsen."
+      }
+    },
+    {
+      "id": "special-03",
+      "category": "special_case",
+      "severity": "severe",
+      "title": "NEEDS_TRANSLATION",
+      "body": "NEEDS_TRANSLATION",
+      "_source_en": {
+        "title": "Venom in the eyes",
+        "body": "Spitting cobras can spray venom into the eyes. Flush the eyes immediately with large amounts of clean water for at least 15 minutes. Do not rub. Go to the clinic — permanent eye damage is possible if not treated quickly."
+      }
+    },
+    {
+      "id": "special-04",
+      "category": "special_case",
+      "severity": "critical",
+      "title": "NEEDS_TRANSLATION",
+      "body": "NEEDS_TRANSLATION",
+      "_source_en": {
+        "title": "Bite on face or body",
+        "body": "Bites on the face, neck, or torso are extremely dangerous because venom reaches vital organs faster. There is no useful first aid besides keeping the person calm and rushing to the nearest clinic or hospital."
+      }
+    },
+    {
+      "id": "special-05",
+      "category": "special_case",
+      "severity": "critical",
+      "title": "NEEDS_TRANSLATION",
+      "body": "NEEDS_TRANSLATION",
+      "_source_en": {
+        "title": "Signs of allergic reaction",
+        "body": "Watch for swelling of the face, lips, or throat, sudden difficulty breathing, or widespread rash. These may signal an allergic reaction to the venom or to antivenom given later. Tell clinic staff immediately."
+      }
+    }
+  ]
+}

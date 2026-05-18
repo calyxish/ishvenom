@@ -1,0 +1,356 @@
+{
+  "$schema": "./priority_species.schema.json",
+  "version": "1.0.0",
+  "source": "WHO snake antivenom database + literature review",
+  "_translation_status": {
+    "en": "verified",
+    "fr": "verified",
+    "ar": "UNVERIFIED — machine-generated placeholders, MUST be reviewed by a native speaker before release",
+    "ha": "UNVERIFIED — placeholders only. Many African languages do not have species-specific common names; expect most fields to be generic category terms like 'Kasa' (viper) or 'Kububuwa'. Verify with a Hausa-speaking herpetologist or linguist.",
+    "sw": "UNVERIFIED — see ha note",
+    "tw": "UNVERIFIED — many placeholders are just 'Ɔwɔ' (generic word for snake). Verify with a native speaker before shipping."
+  },
+  "_verification_required": true,
+  "species": [
+    {
+      "id": "bitis-arietans",
+      "scientific_name": "Bitis arietans",
+      "common_names": {
+        "en": "Puff adder",
+        "fr": "Vipère heurtante",
+        "ar": "الأفعى النافخة",
+        "ha": "Kasa",
+        "sw": "Kifutu",
+        "tw": "Ɔwɔ"
+      },
+      "venomous": "deadly",
+      "venom_type": ["cytotoxic", "hemotoxic"],
+      "range_iso": ["GH", "NG", "KE", "TZ", "UG", "ZA", "SN", "CI", "ML", "BF", "NE", "CM", "SD", "ET", "MZ", "ZW"],
+      "antivenom": "SAVP Polyvalent, EchiTAb-Plus-ICP, Inoserp Pan-Africa",
+      "notes": "Responsible for the majority of snakebite deaths in sub-Saharan Africa. Ambush predator, often trodden on."
+    },
+    {
+      "id": "bitis-gabonica",
+      "scientific_name": "Bitis gabonica",
+      "common_names": {
+        "en": "Gaboon viper",
+        "fr": "Vipère du Gabon",
+        "ar": "أفعى الغابون",
+        "ha": "Kasa babba",
+        "sw": "Kifutu cha Gaboni",
+        "tw": "Ɔwɔ kɛse"
+      },
+      "venomous": "deadly",
+      "venom_type": ["cytotoxic", "hemotoxic"],
+      "range_iso": ["GH", "NG", "CM", "CI", "UG"],
+      "antivenom": "SAVP Polyvalent, Inoserp Pan-Africa",
+      "notes": "Largest fangs of any venomous snake. Slow to strike but injects enormous venom volume."
+    },
+    {
+      "id": "echis-ocellatus",
+      "scientific_name": "Echis ocellatus",
+      "common_names": {
+        "en": "West African carpet viper",
+        "fr": "Vipère des pyramides ouest-africaine",
+        "ar": "أفعى السجاد الغرب أفريقية",
+        "ha": "Kububuwa",
+        "sw": "Kifutu cha Afrika Magharibi",
+        "tw": "Ɔwɔ"
+      },
+      "venomous": "deadly",
+      "venom_type": ["hemotoxic"],
+      "range_iso": ["NG", "GH", "ML", "BF", "NE", "CI", "SN", "CM", "TD"],
+      "antivenom": "EchiTAb-G, EchiTAb-Plus-ICP",
+      "notes": "Causes the most snakebite deaths in West Africa. Venom causes severe coagulopathy."
+    },
+    {
+      "id": "echis-pyramidum",
+      "scientific_name": "Echis pyramidum",
+      "common_names": {
+        "en": "Northeast African saw-scaled viper",
+        "fr": "Vipère à écailles carénées",
+        "ar": "الأفعى الطرشاء",
+        "ha": "Kububuwa",
+        "sw": "Kifutu",
+        "tw": "Ɔwɔ"
+      },
+      "venomous": "deadly",
+      "venom_type": ["hemotoxic"],
+      "range_iso": ["SD", "ET", "KE", "EG"],
+      "antivenom": "Inoserp Pan-Africa, VINS polyvalent",
+      "notes": "Major cause of mortality in Sudan and the Horn of Africa."
+    },
+    {
+      "id": "naja-nigricollis",
+      "scientific_name": "Naja nigricollis",
+      "common_names": {
+        "en": "Black-necked spitting cobra",
+        "fr": "Cobra cracheur à cou noir",
+        "ar": "الكوبرا النافثة سوداء الرقبة",
+        "ha": "Kububuwa mai tofi",
+        "sw": "Fira mweusi wa shingo",
+        "tw": "Ɔwɔ"
+      },
+      "venomous": "deadly",
+      "venom_type": ["cytotoxic", "neurotoxic"],
+      "range_iso": ["GH", "NG", "KE", "TZ", "UG", "SN", "CI", "ML", "BF", "NE", "CM", "SD", "ET"],
+      "antivenom": "SAVP Polyvalent, Inoserp Pan-Africa",
+      "notes": "Can spit venom up to 2 meters. Eye exposure causes intense pain and potential blindness — flush with water immediately."
+    },
+    {
+      "id": "naja-haje",
+      "scientific_name": "Naja haje",
+      "common_names": {
+        "en": "Egyptian cobra",
+        "fr": "Cobra égyptien",
+        "ar": "الكوبرا المصرية",
+        "ha": "Kububuwa na Masar",
+        "sw": "Fira wa Misri",
+        "tw": "Ɔwɔ"
+      },
+      "venomous": "deadly",
+      "venom_type": ["neurotoxic"],
+      "range_iso": ["EG", "SD", "SN", "ML", "BF", "NE", "ET", "KE", "TZ"],
+      "antivenom": "SAVP Polyvalent, Inoserp Pan-Africa",
+      "notes": "Potent neurotoxin; respiratory failure is the main cause of death."
+    },
+    {
+      "id": "naja-melanoleuca",
+      "scientific_name": "Naja melanoleuca",
+      "common_names": {
+        "en": "Forest cobra",
+        "fr": "Cobra des forêts",
+        "ar": "كوبرا الغابات",
+        "ha": "Kububuwa na daji",
+        "sw": "Fira wa msitu",
+        "tw": "Ɔwɔ"
+      },
+      "venomous": "deadly",
+      "venom_type": ["neurotoxic"],
+      "range_iso": ["GH", "NG", "CM", "CI", "UG", "KE", "TZ"],
+      "antivenom": "SAVP Polyvalent, Inoserp Pan-Africa",
+      "notes": "Largest true cobra in Africa. Primarily forest-dwelling."
+    },
+    {
+      "id": "naja-mossambica",
+      "scientific_name": "Naja mossambica",
+      "common_names": {
+        "en": "Mozambique spitting cobra",
+        "fr": "Cobra cracheur du Mozambique",
+        "ar": "كوبرا موزمبيق النافثة",
+        "ha": "Kububuwa mai tofi",
+        "sw": "Fira mtema mate",
+        "tw": "Ɔwɔ"
+      },
+      "venomous": "deadly",
+      "venom_type": ["cytotoxic", "neurotoxic"],
+      "range_iso": ["MZ", "ZW", "ZA", "TZ", "MW"],
+      "antivenom": "SAVP Polyvalent",
+      "notes": "Spits venom readily. Major cause of bites in southern Africa."
+    },
+    {
+      "id": "dendroaspis-polylepis",
+      "scientific_name": "Dendroaspis polylepis",
+      "common_names": {
+        "en": "Black mamba",
+        "fr": "Mamba noir",
+        "ar": "المامبا السوداء",
+        "ha": "Kububuwa baki",
+        "sw": "Koboko mweusi",
+        "tw": "Ɔwɔ tuntum"
+      },
+      "venomous": "deadly",
+      "venom_type": ["neurotoxic", "cardiotoxic"],
+      "range_iso": ["KE", "TZ", "UG", "ZA", "ZW", "MZ", "ET"],
+      "antivenom": "SAVP Polyvalent",
+      "notes": "Fastest snake in Africa. Untreated bites are nearly always fatal. Rapid symptom onset."
+    },
+    {
+      "id": "dendroaspis-viridis",
+      "scientific_name": "Dendroaspis viridis",
+      "common_names": {
+        "en": "Western green mamba",
+        "fr": "Mamba vert occidental",
+        "ar": "المامبا الخضراء الغربية",
+        "ha": "Kububuwa kore",
+        "sw": "Koboko wa kijani",
+        "tw": "Ɔwɔ"
+      },
+      "venomous": "deadly",
+      "venom_type": ["neurotoxic"],
+      "range_iso": ["GH", "NG", "CI", "SN", "CM"],
+      "antivenom": "SAVP Polyvalent, Inoserp Pan-Africa",
+      "notes": "Arboreal. West African forest canopy."
+    },
+    {
+      "id": "dendroaspis-jamesoni",
+      "scientific_name": "Dendroaspis jamesoni",
+      "common_names": {
+        "en": "Jameson's mamba",
+        "fr": "Mamba de Jameson",
+        "ar": "مامبا جيمسون",
+        "ha": "Kububuwa",
+        "sw": "Koboko wa Jameson",
+        "tw": "Ɔwɔ"
+      },
+      "venomous": "deadly",
+      "venom_type": ["neurotoxic"],
+      "range_iso": ["GH", "NG", "CM", "UG", "KE"],
+      "antivenom": "SAVP Polyvalent",
+      "notes": "Arboreal. Central and East African forests."
+    },
+    {
+      "id": "dendroaspis-angusticeps",
+      "scientific_name": "Dendroaspis angusticeps",
+      "common_names": {
+        "en": "Eastern green mamba",
+        "fr": "Mamba vert oriental",
+        "ar": "المامبا الخضراء الشرقية",
+        "ha": "Kububuwa kore",
+        "sw": "Koboko wa kijani wa mashariki",
+        "tw": "Ɔwɔ"
+      },
+      "venomous": "deadly",
+      "venom_type": ["neurotoxic"],
+      "range_iso": ["KE", "TZ", "MZ", "ZW", "ZA"],
+      "antivenom": "SAVP Polyvalent",
+      "notes": "Arboreal. East African coastal forests."
+    },
+    {
+      "id": "dispholidus-typus",
+      "scientific_name": "Dispholidus typus",
+      "common_names": {
+        "en": "Boomslang",
+        "fr": "Boomslang",
+        "ar": "بومسلانج",
+        "ha": "Boomslang",
+        "sw": "Boomslang",
+        "tw": "Ɔwɔ"
+      },
+      "venomous": "deadly",
+      "venom_type": ["hemotoxic"],
+      "range_iso": ["ZA", "ZW", "MZ", "KE", "TZ", "UG", "GH", "NG"],
+      "antivenom": "SAIMR Boomslang monovalent (specialist, not polyvalent)",
+      "notes": "Rear-fanged. Venom causes delayed but severe hemorrhage. Many hospitals lack the specific antivenom."
+    },
+    {
+      "id": "atractaspis-engaddensis",
+      "scientific_name": "Atractaspis engaddensis",
+      "common_names": {
+        "en": "Israeli burrowing asp",
+        "fr": "Vipère fouisseuse",
+        "ar": "الأفعى الحفارة",
+        "ha": "Kububuwa",
+        "sw": "Nyoka wa kuchimba",
+        "tw": "Ɔwɔ"
+      },
+      "venomous": "mildly_venomous",
+      "venom_type": ["cardiotoxic"],
+      "range_iso": ["EG", "SD"],
+      "antivenom": "None proven effective",
+      "notes": "Sidewinder strike; can bite without opening mouth. No reliable antivenom — supportive care only."
+    },
+    {
+      "id": "causus-rhombeatus",
+      "scientific_name": "Causus rhombeatus",
+      "common_names": {
+        "en": "Rhombic night adder",
+        "fr": "Vipère nocturne rhombique",
+        "ar": "أفعى الليل المعينية",
+        "ha": "Kasa na dare",
+        "sw": "Kifutu cha usiku",
+        "tw": "Ɔwɔ"
+      },
+      "venomous": "mildly_venomous",
+      "venom_type": ["cytotoxic"],
+      "range_iso": ["ZA", "ZW", "MZ", "KE", "TZ", "UG"],
+      "antivenom": "Usually not required",
+      "notes": "Bites rarely fatal but locally painful and swelling-inducing."
+    },
+    {
+      "id": "bitis-rhinoceros",
+      "scientific_name": "Bitis rhinoceros",
+      "common_names": {
+        "en": "Rhinoceros viper",
+        "fr": "Vipère rhinocéros",
+        "ar": "أفعى وحيد القرن",
+        "ha": "Kasa mai ƙaho",
+        "sw": "Kifutu chenye pembe",
+        "tw": "Ɔwɔ"
+      },
+      "venomous": "deadly",
+      "venom_type": ["cytotoxic", "hemotoxic"],
+      "range_iso": ["GH", "NG", "CI", "CM"],
+      "antivenom": "SAVP Polyvalent, Inoserp Pan-Africa",
+      "notes": "West African rainforest species with striking horned rostrum."
+    },
+    {
+      "id": "atheris-squamigera",
+      "scientific_name": "Atheris squamigera",
+      "common_names": {
+        "en": "Variable bush viper",
+        "fr": "Vipère des buissons",
+        "ar": "أفعى الشجيرات",
+        "ha": "Kasa na daji",
+        "sw": "Kifutu cha vichakani",
+        "tw": "Ɔwɔ"
+      },
+      "venomous": "deadly",
+      "venom_type": ["hemotoxic"],
+      "range_iso": ["CM", "CF", "UG", "KE", "GH", "NG"],
+      "antivenom": "None specifically validated",
+      "notes": "Arboreal forest viper. Envenomations rare but severe; antivenom options limited."
+    },
+    {
+      "id": "thelotornis-capensis",
+      "scientific_name": "Thelotornis capensis",
+      "common_names": {
+        "en": "Savanna twig snake",
+        "fr": "Serpent brindille",
+        "ar": "أفعى الأغصان",
+        "ha": "Kububuwa na rassa",
+        "sw": "Nyoka wa matawi",
+        "tw": "Ɔwɔ"
+      },
+      "venomous": "deadly",
+      "venom_type": ["hemotoxic"],
+      "range_iso": ["ZA", "ZW", "MZ", "KE", "TZ"],
+      "antivenom": "None — supportive care only",
+      "notes": "Rear-fanged. Severe delayed coagulopathy. No commercial antivenom available."
+    },
+    {
+      "id": "hemachatus-haemachatus",
+      "scientific_name": "Hemachatus haemachatus",
+      "common_names": {
+        "en": "Rinkhals",
+        "fr": "Rinkhals",
+        "ar": "رنكهالس",
+        "ha": "Kububuwa mai tofi",
+        "sw": "Fira mtema mate",
+        "tw": "Ɔwɔ"
+      },
+      "venomous": "deadly",
+      "venom_type": ["neurotoxic", "cytotoxic"],
+      "range_iso": ["ZA", "ZW", "LS", "SZ"],
+      "antivenom": "SAVP Polyvalent",
+      "notes": "Spitting cobra-like species. Can feign death when threatened."
+    },
+    {
+      "id": "naja-nivea",
+      "scientific_name": "Naja nivea",
+      "common_names": {
+        "en": "Cape cobra",
+        "fr": "Cobra du Cap",
+        "ar": "كوبرا الرأس",
+        "ha": "Kububuwa",
+        "sw": "Fira wa Rasi",
+        "tw": "Ɔwɔ"
+      },
+      "venomous": "deadly",
+      "venom_type": ["neurotoxic"],
+      "range_iso": ["ZA", "NA", "BW"],
+      "antivenom": "SAVP Polyvalent",
+      "notes": "Highly neurotoxic venom. Found in southern Africa only."
+    }
+  ]
+}
