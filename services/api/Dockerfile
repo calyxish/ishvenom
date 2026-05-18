@@ -39,6 +39,9 @@ ENV NODE_ENV=production
 COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/packages/shared-types/dist ./packages/shared-types/dist
 COPY --from=build /app/packages/shared-types/package.json ./packages/shared-types/package.json
+# shared-types/dist/*.js imports zod — pnpm's isolated module resolution
+# requires this package to have its own node_modules with the zod symlink.
+COPY --from=build /app/packages/shared-types/node_modules ./packages/shared-types/node_modules
 COPY --from=build /app/services/api/dist ./services/api/dist
 COPY --from=build /app/services/api/node_modules ./services/api/node_modules
 COPY --from=build /app/services/api/package.json ./services/api/package.json
