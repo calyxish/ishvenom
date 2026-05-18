@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS "sit_reports" (
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     "updated_at" TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     "created_by_user_id" UUID NOT NULL
-        REFERENCES "users"("id") ON DELETE RESTRICT,
+        REFERENCES "User"("id") ON DELETE RESTRICT,
 
     -- Scope fields (flattened for efficient filtering).
     "scope_country" CHAR(2) NOT NULL,
