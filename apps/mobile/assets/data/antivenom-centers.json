@@ -1,0 +1,242 @@
+[
+  {
+    "id": "gh-01",
+    "name": "Korle Bu Teaching Hospital — Toxicology Unit",
+    "country": "GH",
+    "latitude": 5.5352,
+    "longitude": -0.2279,
+    "antivenoms_stocked": ["EchiTAb-Plus-ICP", "SAIMR Polyvalent"],
+    "phone": "+233302674000",
+    "last_verified": "2024-11-01"
+  },
+  {
+    "id": "gh-02",
+    "name": "Komfo Anokye Teaching Hospital",
+    "country": "GH",
+    "latitude": 6.6978,
+    "longitude": -1.6262,
+    "antivenoms_stocked": ["EchiTAb-Plus-ICP"],
+    "phone": "+233322022301",
+    "last_verified": "2024-11-01"
+  },
+  {
+    "id": "gh-03",
+    "name": "Tamale Teaching Hospital",
+    "country": "GH",
+    "latitude": 9.4008,
+    "longitude": -0.8393,
+    "antivenoms_stocked": ["EchiTAb-Plus-ICP"],
+    "phone": "+233372023631",
+    "last_verified": "2024-11-01"
+  },
+  {
+    "id": "ng-01",
+    "name": "University College Hospital Ibadan",
+    "country": "NG",
+    "latitude": 7.3986,
+    "longitude": 3.8959,
+    "antivenoms_stocked": ["EchiTAb-Plus-ICP", "SAIMR Polyvalent"],
+    "phone": "+23402241011",
+    "last_verified": "2024-10-01"
+  },
+  {
+    "id": "ng-02",
+    "name": "National Hospital Abuja",
+    "country": "NG",
+    "latitude": 9.0417,
+    "longitude": 7.4951,
+    "antivenoms_stocked": ["EchiTAb-Plus-ICP"],
+    "phone": "+2349abuja01",
+    "last_verified": "2024-10-01"
+  },
+  {
+    "id": "ng-03",
+    "name": "Lagos University Teaching Hospital (LUTH)",
+    "country": "NG",
+    "latitude": 6.5158,
+    "longitude": 3.3631,
+    "antivenoms_stocked": ["EchiTAb-Plus-ICP", "SAIMR Polyvalent"],
+    "phone": "+2341774610",
+    "last_verified": "2024-10-01"
+  },
+  {
+    "id": "sn-01",
+    "name": "Hôpital Aristide Le Dantec — Centre Antivenimeux",
+    "country": "SN",
+    "latitude": 14.6778,
+    "longitude": -17.4474,
+    "antivenoms_stocked": ["IPSER Afrique", "Inoserp Pan-Africa"],
+    "phone": "+221338217800",
+    "last_verified": "2024-09-01"
+  },
+  {
+    "id": "sn-02",
+    "name": "Hôpital Régional de Ziguinchor",
+    "country": "SN",
+    "latitude": 12.5667,
+    "longitude": -16.2667,
+    "antivenoms_stocked": ["IPSER Afrique"],
+    "phone": "+221339910441",
+    "last_verified": "2024-09-01"
+  },
+  {
+    "id": "bf-01",
+    "name": "Centre Hospitalier Universitaire Yalgado Ouédraogo",
+    "country": "BF",
+    "latitude": 12.3706,
+    "longitude": -1.5274,
+    "antivenoms_stocked": ["IPSER Afrique", "Inoserp Pan-Africa"],
+    "phone": "+22625307032",
+    "last_verified": "2024-09-01"
+  },
+  {
+    "id": "bf-02",
+    "name": "Centre Hospitalier Régional de Bobo-Dioulasso",
+    "country": "BF",
+    "latitude": 11.1771,
+    "longitude": -4.2979,
+    "antivenoms_stocked": ["IPSER Afrique"],
+    "phone": "+22620970011",
+    "last_verified": "2024-09-01"
+  },
+  {
+    "id": "ci-01",
+    "name": "Centre Hospitalier Universitaire de Cocody",
+    "country": "CI",
+    "latitude": 5.3600,
+    "longitude": -3.9800,
+    "antivenoms_stocked": ["IPSER Afrique", "Inoserp Pan-Africa"],
+    "phone": "+22522484040",
+    "last_verified": "2024-08-01"
+  },
+  {
+    "id": "ci-02",
+    "name": "CHU de Bouaké",
+    "country": "CI",
+    "latitude": 7.6886,
+    "longitude": -5.0314,
+    "antivenoms_stocked": ["IPSER Afrique"],
+    "phone": "+22531634040",
+    "last_verified": "2024-08-01"
+  },
+  {
+    "id": "ke-01",
+    "name": "Kenyatta National Hospital — Accident & Emergency",
+    "country": "KE",
+    "latitude": -1.3018,
+    "longitude": 36.8062,
+    "antivenoms_stocked": ["SAIMR Polyvalent", "Antivipmyn Africa"],
+    "phone": "+254202726300",
+    "last_verified": "2024-11-01"
+  },
+  {
+    "id": "ke-02",
+    "name": "Moi Teaching and Referral Hospital",
+    "country": "KE",
+    "latitude": 0.5126,
+    "longitude": 35.2741,
+    "antivenoms_stocked": ["SAIMR Polyvalent"],
+    "phone": "+254537633471",
+    "last_verified": "2024-10-01"
+  },
+  {
+    "id": "ke-03",
+    "name": "Coast General Teaching and Referral Hospital",
+    "country": "KE",
+    "latitude": -4.0549,
+    "longitude": 39.6682,
+    "antivenoms_stocked": ["SAIMR Polyvalent"],
+    "phone": "+254412312191",
+    "last_verified": "2024-10-01"
+  },
+  {
+    "id": "tz-01",
+    "name": "Muhimbili National Hospital",
+    "country": "TZ",
+    "latitude": -6.8029,
+    "longitude": 39.2695,
+    "antivenoms_stocked": ["SAIMR Polyvalent", "Antivipmyn Africa"],
+    "phone": "+255222150610",
+    "last_verified": "2024-10-01"
+  },
+  {
+    "id": "tz-02",
+    "name": "Kilimanjaro Christian Medical Centre",
+    "country": "TZ",
+    "latitude": -3.3581,
+    "longitude": 36.8994,
+    "antivenoms_stocked": ["SAIMR Polyvalent"],
+    "phone": "+255272754377",
+    "last_verified": "2024-09-01"
+  },
+  {
+    "id": "ug-01",
+    "name": "Mulago National Referral Hospital",
+    "country": "UG",
+    "latitude": 0.3368,
+    "longitude": 32.5767,
+    "antivenoms_stocked": ["SAIMR Polyvalent", "EchiTAb-Plus-ICP"],
+    "phone": "+256414541884",
+    "last_verified": "2024-10-01"
+  },
+  {
+    "id": "ug-02",
+    "name": "Mbarara University Teaching Hospital",
+    "country": "UG",
+    "latitude": -0.6167,
+    "longitude": 30.6500,
+    "antivenoms_stocked": ["SAIMR Polyvalent"],
+    "phone": "+256485421965",
+    "last_verified": "2024-09-01"
+  },
+  {
+    "id": "sd-01",
+    "name": "Khartoum Teaching Hospital — Toxicology Centre",
+    "country": "SD",
+    "latitude": 15.5881,
+    "longitude": 32.5342,
+    "antivenoms_stocked": ["SAIMR Polyvalent"],
+    "phone": "+249187205000",
+    "last_verified": "2024-07-01"
+  },
+  {
+    "id": "td-01",
+    "name": "Hôpital Général de Référence Nationale",
+    "country": "TD",
+    "latitude": 12.1048,
+    "longitude": 15.0444,
+    "antivenoms_stocked": ["IPSER Afrique"],
+    "phone": "+23522515150",
+    "last_verified": "2024-06-01"
+  },
+  {
+    "id": "mr-01",
+    "name": "Centre Hospitalier National de Nouakchott",
+    "country": "MR",
+    "latitude": 18.0858,
+    "longitude": -15.9785,
+    "antivenoms_stocked": ["IPSER Afrique"],
+    "phone": "+22245251861",
+    "last_verified": "2024-06-01"
+  },
+  {
+    "id": "eg-01",
+    "name": "Ain Shams University Hospital — Toxicology Unit",
+    "country": "EG",
+    "latitude": 30.0753,
+    "longitude": 31.3016,
+    "antivenoms_stocked": ["VACSERA Egyptian Cobra/Viper", "SAIMR Polyvalent"],
+    "phone": "+20224829024",
+    "last_verified": "2024-10-01"
+  },
+  {
+    "id": "eg-02",
+    "name": "Aswan University Hospital",
+    "country": "EG",
+    "latitude": 24.0889,
+    "longitude": 32.8998,
+    "antivenoms_stocked": ["VACSERA Egyptian Cobra/Viper"],
+    "phone": "+20972316098",
+    "last_verified": "2024-08-01"
+  }
+]

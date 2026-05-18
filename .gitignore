@@ -24,6 +24,8 @@ data/
 # Exception: the small processed SFT corpus is worth keeping in git
 !data/processed/
 !data/processed/corpus/
+# Exception: bundled reference data for the mobile app (species, antivenom centers)
+!apps/mobile/assets/data/
 
 # ── Next.js ──────────────────────────────────────────
 .next
