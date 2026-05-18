@@ -3,16 +3,17 @@ FROM node:20-alpine AS base
 WORKDIR /app
 RUN corepack enable
 
+# ── deps: install all packages (layer-cached against lockfile) ───────────────
 FROM base AS deps
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY services/api/package.json ./services/api/
 COPY packages/shared-types/package.json ./packages/shared-types/
 RUN pnpm install --frozen-lockfile
 
+# ── build: compile shared-types + API ────────────────────────────────────────
 FROM base AS build
-# Copy root node_modules AND workspace package node_modules from deps.
-# pnpm creates per-package node_modules with symlinks into the .pnpm store —
-# copying only the root is not enough for workspace builds.
+# Copy per-package node_modules — pnpm workspace packages each get their own
+# node_modules directory with symlinks into the root .pnpm store.
 COPY --from=deps /app/node_modules ./node_modules
 COPY --from=deps /app/packages/shared-types/node_modules ./packages/shared-types/node_modules
 COPY --from=deps /app/services/api/node_modules ./services/api/node_modules
@@ -21,15 +22,24 @@ RUN pnpm --filter @ishvenom/shared-types build
 RUN pnpm --filter @ishvenom/api prisma:generate
 RUN pnpm --filter @ishvenom/api build
 
+# ── deploy: resolve all .pnpm symlinks into a standalone directory ────────────
+# `pnpm deploy` bundles production deps + workspace package content into
+# /deploy with no symlinks — the runtime image needs no .pnpm store.
+FROM base AS deploy
+COPY --from=build /app .
+RUN pnpm --filter @ishvenom/api deploy --prod /deploy
+
+# ── runtime: minimal production image ────────────────────────────────────────
 FROM node:20-alpine AS runtime
 WORKDIR /app
 ENV NODE_ENV=production
+# node_modules from pnpm deploy — real packages, no symlinks
+COPY --from=deploy /deploy/node_modules ./node_modules
+COPY --from=deploy /deploy/package.json ./
+# compiled API dist
 COPY --from=build /app/services/api/dist ./dist
-COPY --from=build /app/services/api/package.json ./
-COPY --from=build /app/services/api/node_modules ./node_modules
-# shared-types is a workspace package imported at runtime — copy its compiled dist
-# so the symlink in node_modules/@ishvenom/shared-types resolves correctly.
-COPY --from=build /app/packages/shared-types/dist ./packages/shared-types/dist
+# Prisma schema + migrations needed at runtime for migrate deploy + queries
+COPY --from=build /app/services/api/prisma ./prisma
 EXPOSE 4000
 USER node
 CMD ["node", "dist/index.js"]
