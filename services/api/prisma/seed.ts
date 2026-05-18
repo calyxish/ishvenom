@@ -3,12 +3,14 @@
  * Run with:  npx tsx prisma/seed.ts
  *
  * Populates:
+ *   - 1 demo user account (for judges / reviewers)
  *   - 12 African snake species (mix of deadly / mildly venomous / non-venomous)
  *   - 8 antivenom centres across West + East Africa
  *   - ~400 encounters spread across the last 90 days in GH, NG, KE, TZ
  */
 
 import { PrismaClient } from '@prisma/client';
+import { hash } from '@node-rs/argon2';
 
 const prisma = new PrismaClient();
 
@@ -299,8 +301,28 @@ function generateEncounters(count: number): EncounterInsert[] {
 
 // ─── main ─────────────────────────────────────────────────────────────────────
 
+// ─── demo credentials (judges / hackathon reviewers) ─────────────────────────
+// These are intentionally public for the Gemma 4 Good Hackathon submission.
+// Change before any production use outside the competition.
+const DEMO_EMAIL    = 'demo@ishvenom.app';
+const DEMO_PASSWORD = 'IshVenom2026!';
+
 async function main() {
-  console.log('🌱 Seeding IshVenom demo database…\n');
+  console.log('Seeding IshVenom demo database…\n');
+
+  // ── 0. Demo user ────────────────────────────────────────────────────────────
+  console.log('  Upserting demo user…');
+  const passwordHash = await hash(DEMO_PASSWORD);
+  // Use raw SQL — schema.prisma declares role as enum UserRole but the
+  // hand-written migration stores it as text, so the ORM client would fail.
+  await prisma.$executeRaw`
+    INSERT INTO "User" ("id", "email", "passwordHash", "role", "createdAt", "updatedAt")
+    VALUES (gen_random_uuid(), ${DEMO_EMAIL}, ${passwordHash}, 'HEALTH_OFFICER', NOW(), NOW())
+    ON CONFLICT ("email") DO UPDATE SET "passwordHash" = EXCLUDED."passwordHash"
+  `;
+  console.log(`  + email:    ${DEMO_EMAIL}`);
+  console.log(`  + password: ${DEMO_PASSWORD}`);
+  console.log('  (credentials are public for hackathon judges)\n');
 
   // ── 1. Species ──────────────────────────────────────────────────────────────
   console.log('  Upserting species…');
