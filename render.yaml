@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: ishvenom-api
+    runtime: docker
+    dockerfilePath: services/api/Dockerfile
+    region: frankfurt
+    branch: main
+    plan: free
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: "4000"
+      - key: LOG_LEVEL
+        value: info
+      - key: DATABASE_URL
+        sync: false
+      - key: DIRECT_URL
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: REGISTRATION_INVITE_TOKEN
+        sync: false
+      - key: CORS_ORIGIN
+        sync: false
