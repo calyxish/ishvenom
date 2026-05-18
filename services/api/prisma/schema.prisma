@@ -6,6 +6,9 @@
 generator client {
   provider        = "prisma-client-js"
   previewFeatures = ["postgresqlExtensions"]
+  // native = macOS for local dev (darwin-arm64 / darwin)
+  // linux-musl-openssl-3.0.x = node:20-alpine on Render (Alpine 3.20+ ships OpenSSL 3)
+  binaryTargets   = ["native", "linux-musl-openssl-3.0.x"]
 }
 
 datasource db {
