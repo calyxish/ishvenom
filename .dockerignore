@@ -1,0 +1,15 @@
+node_modules
+**/node_modules
+**/.pnpm-store
+.git
+.github
+.claude
+apps/mobile
+ml
+docs
+data
+scripts
+*.gguf
+*.tflite
+*.zip
+*.md
