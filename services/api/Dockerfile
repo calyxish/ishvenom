@@ -22,24 +22,27 @@ RUN pnpm --filter @ishvenom/shared-types build
 RUN pnpm --filter @ishvenom/api prisma:generate
 RUN pnpm --filter @ishvenom/api build
 
-# ── deploy: resolve all .pnpm symlinks into a standalone directory ────────────
-# `pnpm deploy` bundles production deps + workspace package content into
-# /deploy with no symlinks — the runtime image needs no .pnpm store.
-FROM base AS deploy
-COPY --from=build /app .
-RUN pnpm --filter @ishvenom/api deploy --prod /deploy
-
-# ── runtime: minimal production image ────────────────────────────────────────
+# ── runtime ───────────────────────────────────────────────────────────────────
+# We preserve the full monorepo directory layout here for two reasons:
+#
+# 1. pnpm workspace symlinks in services/api/node_modules/* point to
+#    ../../node_modules/.pnpm/* — the root node_modules must sit at the same
+#    relative path or Node's ESM resolver can't find express, zod, etc.
+#
+# 2. `prisma generate` writes the query-engine binary and the generated
+#    PrismaClient into node_modules/.prisma/client/. pnpm deploy re-installs
+#    @prisma/client fresh (no generated files), breaking ESM named exports.
+#    Keeping root node_modules intact avoids this entirely.
 FROM node:20-alpine AS runtime
 WORKDIR /app
 ENV NODE_ENV=production
-# node_modules from pnpm deploy — real packages, no symlinks
-COPY --from=deploy /deploy/node_modules ./node_modules
-COPY --from=deploy /deploy/package.json ./
-# compiled API dist
-COPY --from=build /app/services/api/dist ./dist
-# Prisma schema + migrations needed at runtime for migrate deploy + queries
-COPY --from=build /app/services/api/prisma ./prisma
+COPY --from=build /app/node_modules ./node_modules
+COPY --from=build /app/packages/shared-types/dist ./packages/shared-types/dist
+COPY --from=build /app/services/api/dist ./services/api/dist
+COPY --from=build /app/services/api/node_modules ./services/api/node_modules
+COPY --from=build /app/services/api/package.json ./services/api/package.json
+COPY --from=build /app/services/api/prisma ./services/api/prisma
+WORKDIR /app/services/api
 EXPOSE 4000
 USER node
 CMD ["node", "dist/index.js"]
