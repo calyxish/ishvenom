@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import type { DistrictStat } from '@/lib/api';
+import { useThemeTokens } from '@/lib/useThemeTokens';
 
 /**
  * Country centroid lookup — rough, enough to place a marker on the map
@@ -33,24 +34,13 @@ const COUNTRY_CENTROIDS: Record<string, [number, number]> = {
   ZA: [22.9375, -30.5595],
 };
 
-// IshVenom design tokens for map elements (hex required by MapLibre)
-const TOKENS = {
-  bg:      '#0F0D15', // ish-bg  — map background / water fill
-  surface: '#0F172A', // ish-surface — popup bg
-  border:  '#1E293B', // ish-border  — popup border, circle stroke
-  text:    '#F0F9FF', // ish-text
-  muted:   '#64748B', // ish-text-muted — labels
-  accent:  '#0EA5E9', // ish-accent — low bite-ratio circles
-  warning: '#F59E0B', // ish-warning — mid bite-ratio
-  danger:  '#EF4444', // ish-danger  — high bite-ratio
-};
-
 const SOURCE_ID = 'ishvenom-incidents';
 const LAYER_ID  = 'ishvenom-circles';
 
 export function IncidentMap({ districts }: { districts: DistrictStat[] }) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef       = useRef<maplibregl.Map | null>(null);
+  const tokens       = useThemeTokens();
 
   function toGeoJson(): GeoJSON.FeatureCollection {
     const features: GeoJSON.Feature[] = [];
@@ -78,8 +68,8 @@ export function IncidentMap({ districts }: { districts: DistrictStat[] }) {
 
     const map = new maplibregl.Map({
       container: containerRef.current,
-      // Dark vector style — OSM tiles inverted via CSS so the basemap matches
-      // the IshVenom dark theme without needing a paid tile provider.
+      // Vector-style basemap — OSM raster with a CSS filter applied so
+      // it matches the active IshVenom theme.
       style: {
         version: 8,
         sources: {
@@ -94,14 +84,12 @@ export function IncidentMap({ districts }: { districts: DistrictStat[] }) {
           {
             id: 'background',
             type: 'background',
-            paint: { 'background-color': TOKENS.bg },
+            paint: { 'background-color': tokens.bg },
           },
           {
             id: 'osm',
             type: 'raster',
             source: 'osm',
-            // CSS invert + hue-rotate applied via the container — see the
-            // .maplibregl-map rule in the style tag below.
           },
         ],
       },
@@ -109,11 +97,11 @@ export function IncidentMap({ districts }: { districts: DistrictStat[] }) {
       zoom: 2.5,
     });
 
-    // Invert the raster tile layer to get a dark map.
-    // Applied directly on the canvas element via JS so we don't need global CSS.
     map.on('load', () => {
-      const canvas = map.getCanvas();
-      canvas.style.filter = 'invert(1) hue-rotate(180deg)';
+      // Dark-mode: invert the raster tiles. Light-mode: leave them alone.
+      // We re-check this in the theme effect below, so this is just the
+      // first paint.
+      applyBasemapFilter(map, tokens.bg);
 
       map.addSource(SOURCE_ID, {
         type: 'geojson',
@@ -133,18 +121,16 @@ export function IncidentMap({ districts }: { districts: DistrictStat[] }) {
           ],
           'circle-color': [
             'interpolate', ['linear'], ['get', 'biteRatio'],
-            0,   TOKENS.accent,   // low ratio  → purple
-            0.5, TOKENS.warning,  // mid ratio  → amber
-            1,   TOKENS.danger,   // high ratio → red
+            0,   tokens.accent,   // low ratio  → cyan
+            0.5, tokens.warning,  // mid ratio  → amber
+            1,   tokens.danger,   // high ratio → red
           ],
           'circle-opacity': 0.85,
           'circle-stroke-width': 1.5,
-          // Invert the stroke too so it contrasts against the inverted basemap
-          'circle-stroke-color': '#F5F3FF',
+          'circle-stroke-color': tokens.surface,
         },
       });
 
-      // Popup on click
       map.on('click', LAYER_ID, (e) => {
         const f = e.features?.[0];
         if (!f) return;
@@ -159,9 +145,9 @@ export function IncidentMap({ districts }: { districts: DistrictStat[] }) {
           .setLngLat((f.geometry as GeoJSON.Point).coordinates as [number, number])
           .setHTML(
             `<div style="
-               background:${TOKENS.surface};
-               color:${TOKENS.text};
-               border:1px solid ${TOKENS.border};
+               background:${tokens.surface};
+               color:${tokens.text};
+               border:1px solid ${tokens.border};
                border-radius:12px;
                padding:12px 14px;
                font-family:system-ui,sans-serif;
@@ -172,10 +158,10 @@ export function IncidentMap({ districts }: { districts: DistrictStat[] }) {
                <div style="font-weight:700;margin-bottom:6px;">
                  ${p.country} — ${p.district}
                </div>
-               <div style="color:${TOKENS.muted}">
-                 Encounters: <span style="color:${TOKENS.text}">${p.encounterCount}</span><br/>
-                 Bites: <span style="color:${TOKENS.danger}">${p.biteCount}</span><br/>
-                 Top species: <span style="color:${TOKENS.text};font-style:italic">${p.topSpecies}</span>
+               <div style="color:${tokens.textSecondary}">
+                 Encounters: <span style="color:${tokens.text}">${p.encounterCount}</span><br/>
+                 Bites: <span style="color:${tokens.danger}">${p.biteCount}</span><br/>
+                 Top species: <span style="color:${tokens.text};font-style:italic">${p.topSpecies}</span>
                </div>
              </div>`,
           )
@@ -193,15 +179,74 @@ export function IncidentMap({ districts }: { districts: DistrictStat[] }) {
       map.remove();
       mapRef.current = null;
     };
+    // We intentionally only run this on mount — subsequent theme/data
+    // changes are handled by the two effects below.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Update source when districts prop changes
+  // Re-apply circle colors + basemap filter when the theme changes.
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map) return;
+    if (!map.isStyleLoaded()) {
+      map.once('load', () => applyThemeToLayers(map, tokens));
+      return;
+    }
+    applyThemeToLayers(map, tokens);
+  }, [tokens]);
+
+  // Update source when districts prop changes.
   useEffect(() => {
     const map = mapRef.current;
     if (!map) return;
     const source = map.getSource(SOURCE_ID) as maplibregl.GeoJSONSource | undefined;
     if (source) source.setData(toGeoJson());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [districts]);
 
   return <div ref={containerRef} className="w-full h-full" />;
+}
+
+// ─── helpers ────────────────────────────────────────────────────────
+
+function applyBasemapFilter(map: maplibregl.Map, bg: string) {
+  // Dark backgrounds → invert the OSM tiles so the basemap matches the
+  // dark theme without needing a paid vector tile provider. Light bg
+  // leaves the tiles as-is.
+  const canvas = map.getCanvas();
+  const isDark = isDarkColor(bg);
+  canvas.style.filter = isDark ? 'invert(1) hue-rotate(180deg)' : 'none';
+}
+
+function applyThemeToLayers(map: maplibregl.Map, tokens: { bg: string; accent: string; warning: string; danger: string; surface: string }) {
+  applyBasemapFilter(map, tokens.bg);
+  try {
+    map.setPaintProperty('background', 'background-color', tokens.bg);
+  } catch {
+    // Background layer might not exist yet — safe to ignore.
+  }
+  try {
+    map.setPaintProperty(LAYER_ID, 'circle-color', [
+      'interpolate', ['linear'], ['get', 'biteRatio'],
+      0,   tokens.accent,
+      0.5, tokens.warning,
+      1,   tokens.danger,
+    ]);
+    map.setPaintProperty(LAYER_ID, 'circle-stroke-color', tokens.surface);
+  } catch {
+    // Layer might not be added yet — safe to ignore.
+  }
+}
+
+function isDarkColor(hex: string): boolean {
+  // Quick luminance heuristic — used only to decide whether to invert OSM.
+  const m = hex.trim().match(/^#?([0-9a-f]{6})$/i);
+  if (!m) return true;
+  const v = parseInt(m[1]!, 16);
+  const r = (v >> 16) & 0xff;
+  const g = (v >> 8) & 0xff;
+  const b = v & 0xff;
+  // Rec. 709 luma.
+  const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  return luma < 128;
 }

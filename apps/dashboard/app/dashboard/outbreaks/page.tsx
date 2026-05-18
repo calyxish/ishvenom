@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { getOutbreaks, type OutbreakRow } from '@/lib/api';
 
 export default function OutbreaksPage() {
@@ -17,36 +17,56 @@ export default function OutbreaksPage() {
       .finally(() => setLoading(false));
   }, [threshold]);
 
-  return (
-    <div className="p-8 max-w-6xl">
-      <h2 className="text-2xl font-bold text-ish-text mb-1">Outbreak alerts</h2>
-      <p className="text-sm text-ish-text-secondary mb-8">
-        Districts where the last 7 days of encounters exceed{' '}
-        <span className="text-ish-accent font-semibold">
-          {(threshold * 100).toFixed(0)}%
-        </span>{' '}
-        of the preceding 4-week baseline, per species.
-      </p>
+  // Group outbreaks by severity for visual hierarchy.
+  const grouped = useMemo(() => {
+    const critical: OutbreakRow[] = [];
+    const warning:  OutbreakRow[] = [];
+    const watch:    OutbreakRow[] = [];
+    for (const o of outbreaks) {
+      if (o.ratio >= 3 || o.ratio >= 999) critical.push(o);
+      else if (o.ratio >= 1.5)           warning.push(o);
+      else                                watch.push(o);
+    }
+    return { critical, warning, watch };
+  }, [outbreaks]);
 
-      {/* Threshold slider */}
-      <div className="flex items-center gap-4 mb-8 p-4 bg-ish-surface border border-ish-border rounded-2xl">
-        <label htmlFor="threshold" className="text-sm text-ish-text-secondary shrink-0">
-          Threshold ratio
-        </label>
-        <input
-          id="threshold"
-          type="range"
-          min="1.0"
-          max="3.0"
-          step="0.1"
-          value={threshold}
-          onChange={(e) => setThreshold(parseFloat(e.target.value))}
-          className="flex-1 max-w-xs accent-ish-accent"
-        />
-        <span className="text-sm font-semibold text-ish-text tabular-nums w-12">
-          {threshold.toFixed(1)}×
-        </span>
-      </div>
+  return (
+    <div className="p-4 md:p-6 lg:p-8 max-w-6xl">
+      {/* ── Header + threshold filter ────────────────────────────── */}
+      <header className="mb-5 flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+        <div>
+          <h2 className="text-2xl md:text-3xl font-bold text-ish-text tracking-tight">
+            Outbreak alerts
+          </h2>
+          <p className="text-sm text-ish-text-secondary mt-1 max-w-xl">
+            Districts where 7-day encounter counts exceed{' '}
+            <span className="text-ish-accent font-semibold">
+              {threshold.toFixed(1)}×
+            </span>{' '}
+            the preceding 4-week baseline, per species.
+          </p>
+        </div>
+
+        {/* Compact threshold slider in the header */}
+        <div className="flex items-center gap-3 bg-ish-surface border border-ish-border rounded-2xl px-3 py-2 md:min-w-[260px]">
+          <label htmlFor="threshold" className="text-[11px] text-ish-text-muted uppercase tracking-wide shrink-0">
+            Threshold
+          </label>
+          <input
+            id="threshold"
+            type="range"
+            min="1.0"
+            max="3.0"
+            step="0.1"
+            value={threshold}
+            onChange={(e) => setThreshold(parseFloat(e.target.value))}
+            className="flex-1 accent-ish-accent"
+          />
+          <span className="text-sm font-semibold text-ish-text tabular-nums w-10 text-right">
+            {threshold.toFixed(1)}×
+          </span>
+        </div>
+      </header>
 
       {/* Error */}
       {error && (
@@ -76,37 +96,110 @@ export default function OutbreaksPage() {
         </div>
       )}
 
-      {/* Empty state */}
+      {/* Empty state — positive message in success surface */}
       {!loading && !error && outbreaks.length === 0 && (
-        <div className="border border-ish-border bg-ish-surface rounded-2xl p-12 text-center">
-          <p className="text-ish-text-secondary text-sm">
-            No active outbreaks above the current threshold.
+        <div className="border border-ish-success/40 bg-ish-success-surface rounded-2xl p-8 md:p-10 text-center">
+          <svg
+            className="mx-auto mb-3 text-ish-success"
+            width="40" height="40" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" strokeWidth="2"
+            strokeLinecap="round" strokeLinejoin="round"
+            aria-hidden
+          >
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+          <p className="text-ish-success font-semibold">
+            No outbreaks above threshold
           </p>
-          <p className="text-ish-text-muted text-xs mt-1">
-            Lower the threshold slider to see more signals.
+          <p className="text-ish-text-secondary text-xs mt-1.5">
+            Surveillance is normal. Lower the threshold slider to see weaker signals.
           </p>
         </div>
       )}
 
-      {/* Alert cards */}
+      {/* Grouped sections */}
       {!loading && outbreaks.length > 0 && (
-        <div className="space-y-3">
-          {outbreaks.map((o, i) => (
-            <OutbreakCard
-              key={`${o.country}-${o.district}-${o.speciesGuess}-${i}`}
-              outbreak={o}
+        <div className="space-y-6">
+          {grouped.critical.length > 0 && (
+            <Section
+              label="Critical"
+              hint="ratio ≥ 3.0× — immediate attention recommended"
+              variant="danger"
+              count={grouped.critical.length}
+              items={grouped.critical}
             />
-          ))}
+          )}
+          {grouped.warning.length > 0 && (
+            <Section
+              label="Warning"
+              hint="ratio 1.5–3.0× — investigate"
+              variant="warning"
+              count={grouped.warning.length}
+              items={grouped.warning}
+            />
+          )}
+          {grouped.watch.length > 0 && (
+            <Section
+              label="Watch"
+              hint="just above threshold"
+              variant="default"
+              count={grouped.watch.length}
+              items={grouped.watch}
+            />
+          )}
         </div>
       )}
     </div>
   );
 }
 
+function Section({
+  label,
+  hint,
+  variant,
+  count,
+  items,
+}: {
+  label: string;
+  hint: string;
+  variant: 'danger' | 'warning' | 'default';
+  count: number;
+  items: OutbreakRow[];
+}) {
+  const labelColor = {
+    danger:  'text-ish-danger',
+    warning: 'text-ish-warning',
+    default: 'text-ish-text-secondary',
+  }[variant];
+
+  return (
+    <section>
+      <div className="flex items-baseline gap-2 mb-3">
+        <h3 className={`text-sm font-bold uppercase tracking-wider ${labelColor}`}>
+          {label}
+        </h3>
+        <span className="text-xs text-ish-text-muted tabular-nums">
+          {count}
+        </span>
+        <span className="text-xs text-ish-text-muted ml-1 hidden sm:inline">
+          · {hint}
+        </span>
+      </div>
+      <div className="space-y-3">
+        {items.map((o, i) => (
+          <OutbreakCard
+            key={`${o.country}-${o.district}-${o.speciesGuess}-${i}`}
+            outbreak={o}
+          />
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function OutbreakCard({ outbreak: o }: { outbreak: OutbreakRow }) {
-  // Severity by ratio
-  const isCritical = o.ratio >= 5 || o.ratio >= 999;
-  const isWarning  = !isCritical && o.ratio >= 2;
+  const isCritical = o.ratio >= 3 || o.ratio >= 999;
+  const isWarning  = !isCritical && o.ratio >= 1.5;
 
   const cardStyle = isCritical
     ? 'border-ish-danger bg-ish-danger-surface'
@@ -123,9 +216,11 @@ function OutbreakCard({ outbreak: o }: { outbreak: OutbreakRow }) {
   const ratioLabel = o.ratio >= 999 ? 'NEW' : `${o.ratio.toFixed(1)}×`;
 
   return (
-    <div className={`border rounded-2xl p-5 flex items-start justify-between gap-6 transition-colors ${cardStyle}`}>
+    <div
+      className={`border rounded-2xl p-4 md:p-5 flex flex-col gap-3 md:flex-row md:items-start md:justify-between md:gap-6 transition-colors ${cardStyle}`}
+    >
       {/* Left — location + species */}
-      <div className="min-w-0">
+      <div className="min-w-0 flex-1">
         <div className="flex items-center gap-2 mb-1">
           <span className="text-xs font-bold uppercase tracking-wider text-ish-text-muted">
             {o.country}
@@ -133,24 +228,26 @@ function OutbreakCard({ outbreak: o }: { outbreak: OutbreakRow }) {
           {o.district && (
             <>
               <span className="text-ish-border">·</span>
-              <span className="text-xs text-ish-text-secondary">{o.district}</span>
+              <span className="text-xs text-ish-text-secondary truncate">
+                {o.district}
+              </span>
             </>
           )}
         </div>
-        <p className="text-sm font-semibold text-ish-text italic truncate">
+        <p className="text-sm font-semibold text-ish-text italic break-words">
           {o.speciesGuess ?? 'Unknown species'}
         </p>
         <p className="text-xs text-ish-text-muted mt-1">
-          {o.recentCount} encounters in last 7d · baseline avg {o.baselineAvg.toFixed(1)}/day
+          {o.recentCount} encounters in last 7d · baseline {o.baselineAvg.toFixed(1)}/day
         </p>
       </div>
 
       {/* Right — ratio badge */}
-      <div className="shrink-0 text-right">
+      <div className="shrink-0 flex md:flex-col items-baseline md:items-end justify-between md:justify-start gap-1">
         <div className={`text-2xl font-bold tabular-nums ${ratioStyle}`}>
           {ratioLabel}
         </div>
-        <div className="text-[10px] text-ish-text-muted uppercase tracking-wide mt-0.5">
+        <div className="text-[10px] text-ish-text-muted uppercase tracking-wide">
           above baseline
         </div>
       </div>

@@ -2,10 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * IshVenom design tokens — values mirror docs/DESIGN_SYSTEM.md.
+ *
+ * Theming model: tokens are defined as CSS variables. `:root` holds the
+ * light-mode palette; `.dark` overrides for dark mode. The class is
+ * applied to <html> by next-themes (see app/layout.tsx).
+ *
+ * Tailwind utility classes (bg-ish-*, text-ish-*, border-ish-*) resolve
+ * to var(--ish-*) via the colors block in tailwind.config.ts, so every
+ * existing class works in both modes with zero markup changes.
+ */
 @layer base {
+  :root {
+    /* Light mode (default) */
+    --ish-bg:                 #F8FAFC;
+    --ish-surface:            #FFFFFF;
+    --ish-surface-hover:      #F1F5F9;
+    --ish-border:             #E2E8F0;
+    --ish-text:               #0F172A;
+    --ish-text-secondary:     #64748B;
+    --ish-text-muted:         #94A3B8;
+    --ish-accent:             #0EA5E9;
+    --ish-accent-hover:       #0284C7;
+    --ish-accent-secondary:   #7DD3FC;
+    --ish-danger:             #DC2626;
+    --ish-danger-surface:     #FEE2E2;
+    --ish-warning:            #D97706;
+    --ish-warning-surface:    #FEF3C7;
+    --ish-success:            #059669;
+    --ish-success-surface:    #D1FAE5;
+
+    color-scheme: light;
+  }
+
+  .dark {
+    --ish-bg:                 #080C12;
+    --ish-surface:            #0F172A;
+    --ish-surface-hover:      #1E293B;
+    --ish-border:             #1E293B;
+    --ish-text:               #F0F9FF;
+    --ish-text-secondary:     #94A3B8;
+    --ish-text-muted:         #64748B;
+    --ish-accent:             #0EA5E9;
+    --ish-accent-hover:       #0284C7;
+    --ish-accent-secondary:   #7DD3FC;
+    --ish-danger:             #EF4444;
+    --ish-danger-surface:     #2D1214;
+    --ish-warning:            #F59E0B;
+    --ish-warning-surface:    #2D2206;
+    --ish-success:            #10B981;
+    --ish-success-surface:    #0D2818;
+
+    color-scheme: dark;
+  }
+
   html,
   body {
-    background-color: #0f0d15;
-    color: #f5f3ff;
+    background-color: var(--ish-bg);
+    color: var(--ish-text);
   }
 }

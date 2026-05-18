@@ -10,6 +10,7 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
+import { useThemeTokens } from '@/lib/useThemeTokens';
 
 interface Point {
   day: string;
@@ -17,18 +18,12 @@ interface Point {
   bites: number;
 }
 
-// IshVenom design tokens (hardcoded here because Recharts only accepts hex/rgb,
-// not Tailwind class names)
-const COLORS = {
-  border:   '#2E2B3A', // ish-border
-  muted:    '#64748B', // ish-text-muted
-  text:     '#F0F9FF', // ish-text
-  surface:  '#0F172A', // ish-surface
-  accent:   '#0EA5E9', // ish-accent  — encounters (primary metric)
-  danger:   '#EF4444', // ish-danger  — bites
-};
-
 export function TimeSeries({ data }: { data: Point[] }) {
+  // Read live theme colors so the chart re-renders correctly when the user
+  // flips between light and dark mode. Recharts only accepts hex/rgb in JS,
+  // not Tailwind class names, so we can't use `text-ish-*` classes here.
+  const t = useThemeTokens();
+
   const formatted = data.map((d) => ({
     ...d,
     label: new Date(d.day).toLocaleDateString('en-GB', {
@@ -43,38 +38,39 @@ export function TimeSeries({ data }: { data: Point[] }) {
         data={formatted}
         margin={{ top: 10, right: 20, left: 0, bottom: 10 }}
       >
-        <CartesianGrid stroke={COLORS.border} strokeDasharray="3 3" />
+        <CartesianGrid stroke={t.border} strokeDasharray="3 3" />
         <XAxis
           dataKey="label"
-          stroke={COLORS.muted}
-          tick={{ fontSize: 11, fill: COLORS.muted }}
+          stroke={t.textMuted}
+          tick={{ fontSize: 11, fill: t.textMuted }}
           tickLine={false}
         />
         <YAxis
-          stroke={COLORS.muted}
-          tick={{ fontSize: 11, fill: COLORS.muted }}
+          stroke={t.textMuted}
+          tick={{ fontSize: 11, fill: t.textMuted }}
           tickLine={false}
           axisLine={false}
           allowDecimals={false}
         />
         <Tooltip
           contentStyle={{
-            backgroundColor: COLORS.surface,
-            border: `1px solid ${COLORS.border}`,
+            backgroundColor: t.surface,
+            border: `1px solid ${t.border}`,
             borderRadius: 12,
             fontSize: 12,
+            color: t.text,
           }}
-          labelStyle={{ color: COLORS.text }}
-          itemStyle={{ color: COLORS.text }}
+          labelStyle={{ color: t.text }}
+          itemStyle={{ color: t.text }}
         />
         <Legend
-          wrapperStyle={{ fontSize: 12, paddingTop: 12, color: COLORS.muted }}
+          wrapperStyle={{ fontSize: 12, paddingTop: 12, color: t.textSecondary }}
           iconType="line"
         />
         <Line
           type="monotone"
           dataKey="encounters"
-          stroke={COLORS.accent}
+          stroke={t.accent}
           strokeWidth={2}
           dot={false}
           name="Encounters"
@@ -82,7 +78,7 @@ export function TimeSeries({ data }: { data: Point[] }) {
         <Line
           type="monotone"
           dataKey="bites"
-          stroke={COLORS.danger}
+          stroke={t.danger}
           strokeWidth={2}
           dot={false}
           name="Bites"

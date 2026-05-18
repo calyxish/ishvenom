@@ -19,10 +19,18 @@ const EnvSchema = z.object({
     .default('dev-only-invite-token-do-not-use-in-prod'),
   CORS_ORIGIN: z.string().default('http://localhost:3000'),
 
-  // Cloud inference — optional. When absent, sit-report generation is disabled
-  // gracefully (rows are created with status='failed', cloud_unavailable reason).
+  // Cloud inference — optional. When neither RunPod nor Google AI credentials
+  // are present, sit-report generation is disabled gracefully (rows are
+  // created with status='failed', cloud_unavailable reason).
+  //
+  // Resolution order at startup (see services/api/src/index.ts):
+  //   1. RunPod (if both RUNPOD_* set) — preferred for production scale
+  //   2. Google AI Gemma 4 (if GOOGLE_AI_KEY set) — simple fallback, no
+  //      worker to deploy
+  //   3. Disabled
   RUNPOD_API_KEY: z.string().optional(),
   RUNPOD_ENDPOINT_ID: z.string().optional(),
+  GOOGLE_AI_KEY: z.string().optional(),
 });
 
 const parsed = EnvSchema.safeParse(process.env);

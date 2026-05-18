@@ -4,10 +4,10 @@ import type { SitReport } from '@ishvenom/shared-types';
 
 // Tailwind classes per status — no hardcoded hex
 const STATUS_CLASSES: Record<SitReport['status'], string> = {
-  pending:    'text-ish-text-muted   border-ish-text-muted',
-  generating: 'text-ish-warning      border-ish-warning',
-  ready:      'text-ish-success      border-ish-success',
-  failed:     'text-ish-danger       border-ish-danger',
+  pending:    'text-ish-text-muted bg-ish-surface-hover border-ish-border',
+  generating: 'text-ish-warning    bg-ish-warning-surface border-ish-warning/50',
+  ready:      'text-ish-success    bg-ish-success-surface border-ish-success/50',
+  failed:     'text-ish-danger     bg-ish-danger-surface  border-ish-danger/50',
 };
 
 export function SitReportCard({ report }: { report: SitReport }) {
