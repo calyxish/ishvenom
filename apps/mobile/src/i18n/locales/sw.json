@@ -1,0 +1,35 @@
+{
+  "home": {
+    "tagline": "Uchunguzi wa kuumwa na nyoka bila intaneti.",
+    "identifyButton": "Tambua nyoka",
+    "emergencyButton": "Huduma ya kwanza ya dharura",
+    "historyButton": "Historia",
+    "settingsButton": "Mipangilio",
+    "disclaimer": "Programu hii inasaidia — haichukui nafasi ya — huduma ya matibabu ya kitaalamu. Ikiwa mtu ameumwa, tafuta msaada wa haraka."
+  },
+  "identify": {
+    "cameraPermission": "Ufikiaji wa kamera unahitajika kutambua nyoka.",
+    "grantAccess": "Ruhusu kamera",
+    "wasBitten": "Mtu ameumwa",
+    "capture": "Piga picha"
+  },
+  "result": {
+    "empty": "Hakuna matokeo bado.",
+    "tryAgain": "Jaribu tena",
+    "identifyAnother": "Tambua mwingine",
+    "done": "Imekamilika",
+    "latency": "vision {{vision}}ms · gemma {{gemma}}ms · jumla {{total}}ms"
+  },
+  "settings": {
+    "language": "LUGHA",
+    "sync": "USAWAZISHO",
+    "privacy": "FARAGHA",
+    "privacyBody": "Hakuna picha au data ya kibinafsi inayotoka kwenye kifaa chako.",
+    "forgetMe": "Sahau kifaa hiki",
+    "about": "KUHUSU"
+  },
+  "emergency": {
+    "title": "Dharura",
+    "subtitle": "Huduma ya kwanza kwa kuumwa na nyoka."
+  }
+}

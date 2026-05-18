@@ -1,0 +1,35 @@
+{
+  "home": {
+    "tagline": "Offline snakebite triage. No internet. No GPU. No excuses.",
+    "identifyButton": "Identify a snake",
+    "emergencyButton": "Emergency first aid",
+    "historyButton": "History",
+    "settingsButton": "Settings",
+    "disclaimer": "This app supports — it does not replace — professional medical care. If someone has been bitten, seek emergency help immediately."
+  },
+  "identify": {
+    "cameraPermission": "Camera access is required to identify snakes.",
+    "grantAccess": "Grant camera access",
+    "wasBitten": "Someone was bitten",
+    "capture": "Capture"
+  },
+  "result": {
+    "empty": "No result yet.",
+    "tryAgain": "Try again",
+    "identifyAnother": "Identify another",
+    "done": "Done",
+    "latency": "vision {{vision}}ms · gemma {{gemma}}ms · total {{total}}ms"
+  },
+  "settings": {
+    "language": "LANGUAGE",
+    "sync": "SYNC",
+    "privacy": "PRIVACY",
+    "privacyBody": "No photo or personal data ever leaves your device. Only anonymized, coordinate-truncated encounter metadata is synced.",
+    "forgetMe": "Forget this device",
+    "about": "ABOUT"
+  },
+  "emergency": {
+    "title": "Emergency",
+    "subtitle": "Worst-case first aid for snakebite."
+  }
+}

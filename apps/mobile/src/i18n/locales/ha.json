@@ -1,0 +1,35 @@
+{
+  "home": {
+    "tagline": "Taimakon cizon maciji ba tare da intanet ba.",
+    "identifyButton": "Gano maciji",
+    "emergencyButton": "Taimakon farko na gaggawa",
+    "historyButton": "Tarihi",
+    "settingsButton": "Saituna",
+    "disclaimer": "Wannan app yana taimaka — ba ya maye gurbin — kulawar likita. Idan an ciji wani, nemi taimakon likita nan da nan."
+  },
+  "identify": {
+    "cameraPermission": "Ana buƙatar kamara domin gano macizai.",
+    "grantAccess": "Ba da izinin kamara",
+    "wasBitten": "An ciji wani",
+    "capture": "Ɗauki hoto"
+  },
+  "result": {
+    "empty": "Babu sakamako tukuna.",
+    "tryAgain": "Sake gwadawa",
+    "identifyAnother": "Gano wani",
+    "done": "An gama",
+    "latency": "vision {{vision}}ms · gemma {{gemma}}ms · jimla {{total}}ms"
+  },
+  "settings": {
+    "language": "HARSHE",
+    "sync": "AIKI TARE",
+    "privacy": "SIRRI",
+    "privacyBody": "Babu hoto ko bayanin sirri da ke barin na'urarka. Ana haɗawa da bayanan da ba a san su ba kawai.",
+    "forgetMe": "Manta wannan na'urar",
+    "about": "GAME DA"
+  },
+  "emergency": {
+    "title": "Gaggawa",
+    "subtitle": "Taimakon farko don cizon maciji."
+  }
+}

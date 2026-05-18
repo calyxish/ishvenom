@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "IshVenom First-Aid Instruction Corpus",
+  "type": "object",
+  "required": ["language", "version", "verification_status", "instructions"],
+  "properties": {
+    "language": {
+      "type": "string",
+      "enum": ["en", "fr", "ar", "ha", "sw", "tw"]
+    },
+    "version": { "type": "string" },
+    "source": { "type": "string" },
+    "verification_status": {
+      "type": "string",
+      "enum": [
+        "stub_needs_full_human_translation",
+        "draft_needs_native_speaker_and_clinical_review",
+        "authored_by_project_lead_needs_clinical_review",
+        "native_speaker_reviewed_needs_clinical_review",
+        "fully_verified"
+      ]
+    },
+    "medical_reviewer": { "type": ["string", "null"] },
+    "last_reviewed_at": { "type": ["string", "null"], "format": "date-time" },
+    "instructions": {
+      "type": "array",
+      "minItems": 30,
+      "maxItems": 30,
+      "items": {
+        "type": "object",
+        "required": ["id", "category", "severity", "title", "body"],
+        "properties": {
+          "id": { "type": "string" },
+          "category": {
+            "type": "string",
+            "enum": ["prevention", "identification", "immediate_response", "do_not", "transport", "special_case"]
+          },
+          "severity": {
+            "type": "string",
+            "enum": ["general", "moderate", "severe", "critical"]
+          },
+          "title": { "type": "string", "minLength": 1 },
+          "body": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}
