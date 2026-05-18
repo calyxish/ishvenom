@@ -1,0 +1,110 @@
+// IshVenom Prisma schema
+// Neon (Postgres 16 + PostGIS 3)
+// NOTE: geometry columns use Unsupported — spatial queries must use $queryRaw.
+// See .claude/skills/postgis-prisma.md for patterns.
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["postgresqlExtensions"]
+}
+
+datasource db {
+  provider   = "postgresql"
+  url        = env("DATABASE_URL")
+  directUrl  = env("DIRECT_URL")
+  extensions = [postgis]
+}
+
+model User {
+  id        String   @id @default(uuid()) @db.Uuid
+  email     String   @unique
+  passwordHash String
+  role      UserRole @default(HEALTH_OFFICER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  sessions  Session[]
+}
+
+enum UserRole {
+  ADMIN
+  HEALTH_OFFICER
+  WHO_REVIEWER
+}
+
+model Session {
+  id        String   @id
+  userId    String   @db.Uuid
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+
+  @@index([userId])
+}
+
+model Species {
+  id              String   @id @default(uuid()) @db.Uuid
+  scientificName  String   @unique
+  commonNames     Json
+  venomous        String
+  antivenomName   String?
+  description     Json?
+  imageUrl        String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([scientificName])
+}
+
+model AntivenomCenter {
+  id                String   @id @default(uuid()) @db.Uuid
+  name              String
+  country           String   @db.Char(2)
+  location          Unsupported("geometry(Point, 4326)")
+  antivenomsStocked Json
+  phone             String?
+  lastVerified      DateTime?
+  createdAt         DateTime @default(now())
+
+  @@index([country])
+}
+
+model Encounter {
+  id            String   @id @default(uuid()) @db.Uuid
+  deviceId      String
+  createdAt     DateTime @default(now())
+  speciesGuess  String?
+  confidence    Float?
+  location      Unsupported("geometry(Point, 4326)")
+  district      String?
+  country       String   @db.Char(2)
+  language      String   @db.Char(2)
+  actionTaken   String
+  wasBite       Boolean
+  metadata      Json?
+
+  @@index([createdAt])
+  @@index([country, district])
+  @@index([speciesGuess])
+}
+
+model SitReport {
+  id               String   @id @default(uuid()) @db.Uuid
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  createdByUserId  String   @db.Uuid
+  scopeCountry     String   @db.Char(2)
+  scopeDistrict    String?
+  scopeSince       DateTime
+  scopeUntil       DateTime
+  status           String   // pending | generating | ready | failed
+  model            String
+  markdown         String?
+  structured       Json?
+  error            String?
+  promptTokens     Int?
+  completionTokens Int?
+  latencyMs        Int?
+
+  @@index([createdByUserId])
+  @@index([scopeCountry, scopeDistrict])
+  @@index([createdAt])
+}

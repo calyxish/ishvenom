@@ -1,0 +1,7 @@
+# Pin the versions that were green on 2026-04-08. vLLM moves fast and
+# pre-release upgrades routinely break the SamplingParams shape.
+vllm==0.6.2
+runpod==1.7.4
+# vLLM already pulls transformers, but we pin here so Dependabot can see
+# the version we actually tested against.
+transformers==4.45.2
