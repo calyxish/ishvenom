@@ -1,0 +1,221 @@
+{
+  "$schema": "./instruction.schema.json",
+  "language": "fr",
+  "version": "1.0.0",
+  "source": "Translated from instructions.en.json by project author. Author's French is conversational, not medically calibrated.",
+  "verification_status": "draft_needs_native_speaker_and_clinical_review",
+  "medical_reviewer": null,
+  "last_reviewed_at": null,
+  "instructions": [
+    {
+      "id": "prev-01",
+      "category": "prevention",
+      "severity": "general",
+      "title": "Quand les serpents sont actifs",
+      "body": "La plupart des serpents africains sont plus actifs au crépuscule et en début de nuit, ainsi qu'après la pluie. Marchez avec prudence à ces moments-là, et portez toujours une lampe quand vous sortez la nuit."
+    },
+    {
+      "id": "prev-02",
+      "category": "prevention",
+      "severity": "general",
+      "title": "Où se cachent les serpents",
+      "body": "Les serpents s'abritent dans les herbes hautes, sous les pierres, dans les tas de bois, dans les greniers et dans les trous. Ne mettez pas la main dans un endroit que vous ne voyez pas. Déplacez bois et pierres avec un long bâton, jamais avec les mains."
+    },
+    {
+      "id": "prev-03",
+      "category": "prevention",
+      "severity": "general",
+      "title": "Chaussures et vêtements",
+      "body": "En zone à serpents, portez des chaussures fermées ou des bottes et des pantalons longs quand vous marchez dans l'herbe, aux champs ou en brousse. La plupart des morsures touchent le pied et la jambe."
+    },
+    {
+      "id": "prev-04",
+      "category": "prevention",
+      "severity": "general",
+      "title": "Marcher en sécurité",
+      "body": "Regardez le sol où vous posez les pieds. Si vous voyez un serpent, arrêtez-vous, ne bougez pas, et reculez lentement. Ne courez pas, n'essayez pas de le tuer, et n'enjambez pas."
+    },
+    {
+      "id": "prev-05",
+      "category": "prevention",
+      "severity": "general",
+      "title": "La nuit à la maison",
+      "body": "Secouez chaussures, vêtements et literie avant usage. Gardez les espaces de couchage bien rangés. Utilisez une moustiquaire bordée sous le matelas — elle protège contre les moustiques et contre les serpents qui entrent la nuit."
+    },
+    {
+      "id": "id-01",
+      "category": "identification",
+      "severity": "general",
+      "title": "Identification en sécurité",
+      "body": "Ne poursuivez pas le serpent et n'essayez pas de l'attraper pour l'identifier. S'il est déjà mort, prenez une photo à distance. S'il est vivant, ne vous approchez pas — décrivez plutôt sa taille, sa couleur et son motif à la clinique."
+    },
+    {
+      "id": "id-02",
+      "category": "identification",
+      "severity": "moderate",
+      "title": "Reconnaître une morsure",
+      "body": "Cherchez une ou deux marques de crocs, des griffures, ou une rangée courbée de petites plaies. Il y a souvent peu de sang au début. La douleur, le gonflement et les bleus commencent généralement en quelques minutes pour une morsure grave."
+    },
+    {
+      "id": "id-03",
+      "category": "identification",
+      "severity": "general",
+      "title": "Morsure sèche",
+      "body": "Un serpent peut mordre sans injecter de venin — on appelle cela une morsure sèche. Elle nécessite quand même un avis médical, car les symptômes peuvent être retardés. Ne supposez pas qu'une morsure est sèche simplement parce que le gonflement tarde."
+    },
+    {
+      "id": "id-04",
+      "category": "identification",
+      "severity": "severe",
+      "title": "Symptômes neurotoxiques",
+      "body": "Surveillez : paupières qui tombent, difficulté à avaler ou à parler, faiblesse musculaire, vision floue, difficulté à respirer. Ces signes indiquent une morsure neurotoxique (mamba ou cobra) et nécessitent une aide d'urgence immédiate."
+    },
+    {
+      "id": "id-05",
+      "category": "identification",
+      "severity": "severe",
+      "title": "Symptômes hémorragiques",
+      "body": "Surveillez : saignements des gencives, du nez ou d'anciennes plaies, sang dans les urines ou les selles, et bleus qui s'étendent. Ces signes indiquent une morsure de vipère (vipère heurtante, vipère des pyramides, boomslang) et nécessitent une aide d'urgence immédiate."
+    },
+    {
+      "id": "resp-01",
+      "category": "immediate_response",
+      "severity": "critical",
+      "title": "Rester calme et s'éloigner",
+      "body": "Éloignez la victime de quelques mètres de l'endroit où la morsure a eu lieu, pour que le serpent ne puisse pas frapper à nouveau. Gardez la personne calme — la panique accélère le cœur et fait circuler le venin plus vite."
+    },
+    {
+      "id": "resp-02",
+      "category": "immediate_response",
+      "severity": "critical",
+      "title": "Enlever ce qui serre",
+      "body": "Retirez immédiatement bagues, bracelets, montres, anneaux de cheville et vêtements serrés du membre mordu. Le gonflement va venir, et ces objets peuvent couper la circulation et causer des dommages durables."
+    },
+    {
+      "id": "resp-03",
+      "category": "immediate_response",
+      "severity": "critical",
+      "title": "Immobiliser le membre",
+      "body": "Gardez le bras ou la jambe mordu aussi immobile que possible. Si vous pouvez, attelez-le avec un bâton ou un tissu roulé. Portez la personne jusqu'au transport — ne la laissez pas marcher si la morsure est à la jambe."
+    },
+    {
+      "id": "resp-04",
+      "category": "immediate_response",
+      "severity": "moderate",
+      "title": "Nettoyer doucement",
+      "body": "Essuyez la plaie doucement avec de l'eau propre ou du savon si disponible. Ne frottez pas, n'appliquez ni pâte ni herbes, et ne couvrez pas avec un bandage serré."
+    },
+    {
+      "id": "resp-05",
+      "category": "immediate_response",
+      "severity": "moderate",
+      "title": "Marquer le gonflement",
+      "body": "Avec un stylo ou un morceau de charbon, tracez une ligne au bord du gonflement toutes les 15 minutes. Cela aide la clinique à juger la vitesse de progression du venin."
+    },
+    {
+      "id": "donot-01",
+      "category": "do_not",
+      "severity": "critical",
+      "title": "Ne jamais inciser la plaie",
+      "body": "Ne coupez pas la morsure avec un couteau, un rasoir ou une lame. Inciser ne fait pas sortir le venin. Cela provoque saignements, infections et dommages permanents. C'est l'une des pires choses à faire."
+    },
+    {
+      "id": "donot-02",
+      "category": "do_not",
+      "severity": "critical",
+      "title": "Ne jamais sucer la plaie",
+      "body": "N'essayez pas d'aspirer le venin avec la bouche ou avec un dispositif de succion. Cela ne fonctionne pas, cela met l'aidant en danger, et cela retarde le vrai traitement."
+    },
+    {
+      "id": "donot-03",
+      "category": "do_not",
+      "severity": "critical",
+      "title": "Ne jamais poser un garrot serré",
+      "body": "N'attachez pas une corde, un tissu ou un lien serré autour du membre pour couper la circulation. Un garrot serré peut provoquer gangrène et amputation. En cas de morsure de cobra ou mamba, un bandage compressif large peut aider — mais seulement si une personne formée vous guide."
+    },
+    {
+      "id": "donot-04",
+      "category": "do_not",
+      "severity": "critical",
+      "title": "Ni glace, ni eau chaude",
+      "body": "Ne mettez pas de glace sur la morsure. Ne mettez ni eau chaude, ni feu, ni objet chaud sur la morsure. Les deux endommagent les tissus et n'arrêtent pas le venin."
+    },
+    {
+      "id": "donot-05",
+      "category": "do_not",
+      "severity": "critical",
+      "title": "Ni alcool ni stimulants",
+      "body": "Ne donnez pas à la victime d'alcool, de café, de boissons énergisantes ou d'autres stimulants. Cela accélère le cœur et propage le venin plus vite. Donnez seulement de l'eau propre si la personne est bien éveillée et peut avaler."
+    },
+    {
+      "id": "trans-01",
+      "category": "transport",
+      "severity": "critical",
+      "title": "Transporter allongé",
+      "body": "Portez la victime allongée à plat, avec le membre mordu légèrement sous le niveau du cœur si possible. Amenez-la à la clinique ou à l'hôpital le plus proche aussi vite que possible en toute sécurité. Ne la laissez pas marcher."
+    },
+    {
+      "id": "trans-02",
+      "category": "transport",
+      "severity": "moderate",
+      "title": "Ce qu'il faut dire à la clinique",
+      "body": "Dites au personnel de la clinique : quand la morsure a eu lieu, où sur le corps, à quoi ressemblait le serpent (si vu), quels symptômes sont apparus, et quels premiers soins ont déjà été donnés. Montrez la photo si vous en avez une."
+    },
+    {
+      "id": "trans-03",
+      "category": "transport",
+      "severity": "moderate",
+      "title": "Photographier le serpent seulement en sécurité",
+      "body": "Si le serpent est déjà mort ou loin, prenez une photo à distance. Ne risquez jamais une deuxième morsure pour obtenir une image. Une description de la taille, de la couleur et du motif est aussi utile."
+    },
+    {
+      "id": "trans-04",
+      "category": "transport",
+      "severity": "moderate",
+      "title": "Serpent mort à ensacher",
+      "body": "Un serpent mort peut encore mordre par réflexe pendant une heure. Si vous l'amenez à la clinique pour identification, placez-le dans un sac ou un récipient fermé. Ne le transportez jamais libre."
+    },
+    {
+      "id": "trans-05",
+      "category": "transport",
+      "severity": "severe",
+      "title": "Trajets longs",
+      "body": "Si la clinique est loin, gardez la personne calme, allongée, et le membre immobile. Donnez de petites gorgées d'eau si elle est éveillée. Surveillez attentivement sa respiration. Si la respiration devient difficile, dégagez les voies aériennes et pressez le pas."
+    },
+    {
+      "id": "special-01",
+      "category": "special_case",
+      "severity": "critical",
+      "title": "Enfants mordus",
+      "body": "Les enfants sont beaucoup plus à risque parce que leur corps est plus petit et que le venin atteint plus vite des doses mortelles. Traitez toute morsure d'enfant comme une urgence, même si les symptômes semblent légers au début. Allez à la clinique sans attendre."
+    },
+    {
+      "id": "special-02",
+      "category": "special_case",
+      "severity": "critical",
+      "title": "Femmes enceintes",
+      "body": "Une femme enceinte mordue par un serpent a besoin de soins d'urgence immédiats, pour la mère et pour le bébé. Certains venins peuvent provoquer une fausse couche ou nuire à l'enfant à naître. N'attendez pas que les symptômes s'aggravent."
+    },
+    {
+      "id": "special-03",
+      "category": "special_case",
+      "severity": "severe",
+      "title": "Venin dans les yeux",
+      "body": "Les cobras cracheurs peuvent projeter du venin dans les yeux. Rincez immédiatement les yeux à grande eau propre pendant au moins 15 minutes. Ne frottez pas. Allez à la clinique — des dommages oculaires permanents sont possibles sans traitement rapide."
+    },
+    {
+      "id": "special-04",
+      "category": "special_case",
+      "severity": "critical",
+      "title": "Morsure au visage ou au tronc",
+      "body": "Les morsures au visage, au cou ou au tronc sont extrêmement dangereuses parce que le venin atteint les organes vitaux plus vite. Il n'y a pas de premier soin utile à part garder la personne calme et la conduire d'urgence à la clinique ou à l'hôpital le plus proche."
+    },
+    {
+      "id": "special-05",
+      "category": "special_case",
+      "severity": "critical",
+      "title": "Signes de réaction allergique",
+      "body": "Surveillez : gonflement du visage, des lèvres ou de la gorge, difficulté respiratoire soudaine, ou éruption cutanée étendue. Ces signes peuvent indiquer une réaction allergique au venin ou à l'antivenin donné plus tard. Dites-le immédiatement au personnel de la clinique."
+    }
+  ]
+}
