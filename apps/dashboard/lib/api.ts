@@ -1,14 +1,29 @@
 /**
  * Typed fetch client for the IshVenom API.
  *
- * Auth wall removed for demo/judge access — requests are unauthenticated.
- * Token helpers kept as stubs so callers don't break.
+ * Auth: token-based. login() stores the token; request() sends it as Bearer;
+ * a 401 response clears the token and bounces the browser to /login.
  */
 
 const TOKEN_KEY = 'ishvenom:token';
 
-export const API_BASE =
-  process.env.NEXT_PUBLIC_API_BASE ?? 'http://localhost:4000/api/v1';
+/**
+ * Normalize the API base so that any of the following env values all resolve
+ * to the same URL — protects against the common Vercel mis-config where the
+ * /api/v1 suffix gets dropped:
+ *   https://api.example.com
+ *   https://api.example.com/
+ *   https://api.example.com/api/v1
+ *   https://api.example.com/api/v1/
+ */
+function normalizeApiBase(raw: string): string {
+  const trimmed = raw.replace(/\/+$/, '');
+  return trimmed.endsWith('/api/v1') ? trimmed : `${trimmed}/api/v1`;
+}
+
+export const API_BASE = normalizeApiBase(
+  process.env.NEXT_PUBLIC_API_BASE ?? 'http://localhost:4000',
+);
 
 export function getToken(): string | null {
   if (typeof window === 'undefined') return null;
@@ -52,8 +67,13 @@ async function request<T>(
   const res = await fetch(`${API_BASE}${path}`, { ...init, headers });
 
   if (res.status === 401) {
-    // Auth wall removed — surface as a regular error, no redirect.
-    throw new ApiError(401, 'unauthorized', 'Unauthorized');
+    // Stale or missing token — clear it and bounce to /login so the user
+    // can re-authenticate. Still throw so callers stop processing.
+    clearToken();
+    if (typeof window !== 'undefined' && window.location.pathname !== '/login') {
+      window.location.href = '/login';
+    }
+    throw new ApiError(401, 'unauthorized', 'Session expired — please sign in again');
   }
 
   const body = (await res.json().catch(() => ({}))) as unknown;
@@ -159,5 +179,5 @@ export interface SpeciesRow {
 }
 
 export async function getSpecies(): Promise<{ species: SpeciesRow[] }> {
-  return request('/species', { method: 'GET' }, { auth: false });
+  return request('/species', { method: 'GET' });
 }

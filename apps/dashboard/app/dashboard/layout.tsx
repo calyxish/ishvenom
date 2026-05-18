@@ -1,7 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { getToken, logout } from '@/lib/api';
 
 const NAV = [
   { href: '/dashboard',                  label: 'Overview' },
@@ -17,6 +19,28 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const router   = useRouter();
+  const [ready, setReady] = useState(false);
+
+  // Client-side auth guard: bounce unauthenticated users to /login before
+  // anything in the dashboard renders. Prevents a flash of protected UI.
+  useEffect(() => {
+    if (!getToken()) {
+      router.replace('/login');
+    } else {
+      setReady(true);
+    }
+  }, [router]);
+
+  async function onSignOut() {
+    try {
+      await logout();
+    } finally {
+      router.push('/login');
+    }
+  }
+
+  if (!ready) return null;
 
   return (
     <div className="min-h-screen flex bg-ish-bg text-ish-text">
@@ -66,9 +90,16 @@ export default function DashboardLayout({
           })}
         </nav>
 
-        {/* Footer label */}
-        <div className="mt-6 pt-4 border-t border-ish-border">
-          <p className="text-[11px] text-ish-text-muted leading-relaxed">
+        {/* Footer: sign out + version */}
+        <div className="mt-6 pt-4 border-t border-ish-border space-y-3">
+          <button
+            type="button"
+            onClick={onSignOut}
+            className="block w-full text-left px-3 py-2 rounded-xl text-sm font-medium text-ish-text-secondary hover:bg-ish-surface-hover hover:text-ish-text transition-colors"
+          >
+            Sign out
+          </button>
+          <p className="text-[11px] text-ish-text-muted leading-relaxed px-3">
             IshVenom v1 · Gemma 4 Hackathon
           </p>
         </div>
