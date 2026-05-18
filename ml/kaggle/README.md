@@ -4,6 +4,42 @@ Two notebooks. Run them in order. Total GPU usage: ~7 hours out of your 30/week 
 
 ---
 
+## Don't want to train? Use the pre-built artifacts
+
+Judges and anyone reproducing the app can pull the trained weights and datasets directly — no Kaggle GPU time required:
+
+### Pre-built models on HuggingFace
+
+| Artifact | Repo |
+|---|---|
+| TFLite vision classifier (EfficientNet-B0, 20 species) + `labels.json` + PyTorch checkpoint | [`CalyxIsh/ishvenom-vision-classifier`](https://huggingface.co/CalyxIsh/ishvenom-vision-classifier) |
+| Gemma 4 E2B + IshVenom LoRA, merged to FP16 (~5 GB) | [`CalyxIsh/ishvenom-gemma-e2b-merged`](https://huggingface.co/CalyxIsh/ishvenom-gemma-e2b-merged) |
+| Same model quantized to Q4_K_M GGUF for `llama.rn` (~3 GB) | [`CalyxIsh/ishvenom-gemma-e2b-merged-Q4_K_M-GGUF`](https://huggingface.co/CalyxIsh/ishvenom-gemma-e2b-merged-Q4_K_M-GGUF) |
+
+### Open training data on Kaggle
+
+| Dataset | Kaggle |
+|---|---|
+| First-aid SFT corpus (5,000 examples, EN + FR) | [`kwakyeishmael/ishvenom-corpus`](https://www.kaggle.com/datasets/kwakyeishmael/ishvenom-corpus) |
+| Snake image splits (~1,500 images, 20 African species, train/val/test) | [`kwakyeishmael/snakes-africa`](https://www.kaggle.com/datasets/kwakyeishmael/snakes-africa) |
+
+### One-shot download for the mobile app
+
+```bash
+pip install huggingface-hub
+huggingface-cli download CalyxIsh/ishvenom-vision-classifier \
+  --include "venomwise-vision.tflite" "labels.json" \
+  --local-dir apps/mobile/assets/models
+
+huggingface-cli download CalyxIsh/ishvenom-gemma-e2b-merged-Q4_K_M-GGUF \
+  --include "*.gguf" \
+  --local-dir apps/mobile/assets/models
+```
+
+That gives you everything the app needs to run on-device — no training required. If you want to retrain from scratch or change the recipe, keep reading.
+
+---
+
 ## Prerequisites
 
 ### 1. Run the data pipeline on your Mac first
@@ -42,6 +78,10 @@ pip install kaggle
 ```
 
 ### 3. Upload datasets to Kaggle
+
+(Skip this if you're using the already-published versions linked at the top —
+[`kwakyeishmael/snakes-africa`](https://www.kaggle.com/datasets/kwakyeishmael/snakes-africa)
+and [`kwakyeishmael/ishvenom-corpus`](https://www.kaggle.com/datasets/kwakyeishmael/ishvenom-corpus).)
 
 ```bash
 # Vision images
@@ -110,9 +150,10 @@ Or upload through the Kaggle web UI: kaggle.com/datasets → New Dataset.
 2. Use [ggml-org/gguf-my-repo](https://huggingface.co/spaces/ggml-org/gguf-my-repo) HF Space to quantize to Q4_K_M
 3. Download the `.gguf` from the resulting HF repo
 
-**HuggingFace repos:**
-- Merged model: `CalyxIsh/ishvenom-gemma-e2b-merged`
-- GGUF Q4_K_M: `CalyxIsh/ishvenom-gemma-e2b-merged-Q4_K_M-GGUF`
+**HuggingFace repos (already published):**
+- Vision classifier: [`CalyxIsh/ishvenom-vision-classifier`](https://huggingface.co/CalyxIsh/ishvenom-vision-classifier)
+- Merged FP16 LoRA: [`CalyxIsh/ishvenom-gemma-e2b-merged`](https://huggingface.co/CalyxIsh/ishvenom-gemma-e2b-merged)
+- GGUF Q4_K_M: [`CalyxIsh/ishvenom-gemma-e2b-merged-Q4_K_M-GGUF`](https://huggingface.co/CalyxIsh/ishvenom-gemma-e2b-merged-Q4_K_M-GGUF)
 
 **Success check:** GGUF file size should be ~3.4 GB.
 
