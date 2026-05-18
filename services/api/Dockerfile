@@ -15,6 +15,7 @@ FROM base AS build
 # copying only the root is not enough for workspace builds.
 COPY --from=deps /app/node_modules ./node_modules
 COPY --from=deps /app/packages/shared-types/node_modules ./packages/shared-types/node_modules
+COPY --from=deps /app/services/api/node_modules ./services/api/node_modules
 COPY . .
 RUN pnpm --filter @ishvenom/shared-types build
 RUN pnpm --filter @ishvenom/api prisma:generate
