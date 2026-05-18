@@ -1,14 +1,17 @@
-# IshVenom
-
-> **Snakebite triage and prevention for sub-Saharan Africa — running on $80 phones, in 6 languages, with Gemma 4.**
-
-[![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Built with Gemma 4](https://img.shields.io/badge/Built_with-Gemma_4-4285F4)](https://ai.google.dev/gemma)
-[![Status: Submission ready](https://img.shields.io/badge/Status-Submission_ready-brightgreen)]()
-
-Built by **Kwakye Ishmael Affum (Calyx Ish)** · [@calyxish](https://github.com/calyxish) · University of Ghana, Legon
-
-Submission for the **Gemma 4 Good Hackathon** (Kaggle × Google DeepMind) · Health & Sciences track.
+<div align="center">
+  <img src="docs/logo.svg" alt="IshVenom" width="160" height="160">
+  <h1>IshVenom</h1>
+  <p><strong>Snakebite triage and prevention for sub-Saharan Africa<br>running on $80 phones · 6 languages · powered by Gemma 4</strong></p>
+  <p>
+    <a href="https://opensource.org/licenses/Apache-2.0"><img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg" alt="License: Apache 2.0"></a>
+    <a href="https://ai.google.dev/gemma"><img src="https://img.shields.io/badge/Built_with-Gemma_4-4285F4" alt="Built with Gemma 4"></a>
+    <img src="https://img.shields.io/badge/Status-Submission_ready-brightgreen" alt="Status: Submission ready">
+  </p>
+  <p>
+    Built by <strong>Kwakye Ishmael Affum (Calyx Ish)</strong> · <a href="https://github.com/calyxish">@calyxish</a> · University of Ghana, Legon<br>
+    <em>Gemma 4 Good Hackathon · Kaggle × Google DeepMind · Health &amp; Sciences track</em>
+  </p>
+</div>
 
 ---
 
