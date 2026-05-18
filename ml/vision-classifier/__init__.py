@@ -1,0 +1,1 @@
+"""Snake species vision classifier."""

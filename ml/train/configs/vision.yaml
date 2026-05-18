@@ -1,0 +1,19 @@
+# IshVenom vision classifier — Phase 3 config
+# Target: >= 85% top-3 accuracy on the 20 priority species.
+
+backbone: efficientnet_lite0
+image_size: 224
+batch_size: 64
+epochs: 25
+lr: 0.0005
+weight_decay: 0.01
+label_smoothing: 0.1
+num_workers: 4
+seed: 42
+
+# Phase 2 outputs:
+splits_dir: data/processed/splits
+species_json: ml/datasets/species/priority_species.json
+out_dir: runs/vision
+
+use_wandb: false

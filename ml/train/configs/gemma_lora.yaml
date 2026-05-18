@@ -1,0 +1,30 @@
+# IshVenom Gemma 4 E2B LoRA fine-tune — Phase 3 config
+# Matches tasks/todo.md: rank 16, alpha 32, 3 epochs
+
+base_model: google/gemma-4-e2b
+corpus_path: data/processed/corpus/firstaid_sft.jsonl
+out_dir: runs/gemma_lora
+
+# LoRA
+lora_rank: 16
+lora_alpha: 32
+lora_dropout: 0.05
+target_modules:
+  - q_proj
+  - k_proj
+  - v_proj
+  - o_proj
+  - gate_proj
+  - up_proj
+  - down_proj
+
+# Training
+epochs: 3
+batch_size: 4
+grad_accum: 8       # effective batch = 32
+lr: 0.0002
+warmup_ratio: 0.03
+max_seq_len: 1024
+seed: 42
+bf16: true
+use_wandb: false
