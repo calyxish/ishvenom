@@ -21,10 +21,10 @@ interface Point {
 // not Tailwind class names)
 const COLORS = {
   border:   '#2E2B3A', // ish-border
-  muted:    '#6B6580', // ish-text-muted
-  text:     '#F5F3FF', // ish-text
-  surface:  '#1A1725', // ish-surface
-  accent:   '#7C5AFF', // ish-accent  — encounters (primary metric)
+  muted:    '#64748B', // ish-text-muted
+  text:     '#F0F9FF', // ish-text
+  surface:  '#0F172A', // ish-surface
+  accent:   '#0EA5E9', // ish-accent  — encounters (primary metric)
   danger:   '#EF4444', // ish-danger  — bites
 };
 

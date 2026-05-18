@@ -36,11 +36,11 @@ const COUNTRY_CENTROIDS: Record<string, [number, number]> = {
 // IshVenom design tokens for map elements (hex required by MapLibre)
 const TOKENS = {
   bg:      '#0F0D15', // ish-bg  — map background / water fill
-  surface: '#1A1725', // ish-surface — popup bg
-  border:  '#2E2B3A', // ish-border  — popup border, circle stroke
-  text:    '#F5F3FF', // ish-text
-  muted:   '#6B6580', // ish-text-muted — labels
-  accent:  '#7C5AFF', // ish-accent — low bite-ratio circles
+  surface: '#0F172A', // ish-surface — popup bg
+  border:  '#1E293B', // ish-border  — popup border, circle stroke
+  text:    '#F0F9FF', // ish-text
+  muted:   '#64748B', // ish-text-muted — labels
+  accent:  '#0EA5E9', // ish-accent — low bite-ratio circles
   warning: '#F59E0B', // ish-warning — mid bite-ratio
   danger:  '#EF4444', // ish-danger  — high bite-ratio
 };

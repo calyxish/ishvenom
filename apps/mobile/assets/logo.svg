@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="IshVenom logo">
   <defs>
-    <!-- Background: deep navy radial gradient, lighter at top-left for subtle depth -->
+    <!-- Background: deep cyan-navy radial gradient, lighter at top-left for subtle depth -->
     <radialGradient id="bgGrad" cx="38%" cy="32%" r="70%">
-      <stop offset="0%" stop-color="#0F2040"/>
-      <stop offset="100%" stop-color="#050B18"/>
+      <stop offset="0%" stop-color="#061E38"/>
+      <stop offset="100%" stop-color="#030D1A"/>
     </radialGradient>
 
     <!-- Snake body: emerald gradient, darker at tail, brighter at head -->
@@ -21,8 +21,8 @@
 
   <!-- ── Background ────────────────────────────────────────────────── -->
   <circle cx="200" cy="200" r="190" fill="url(#bgGrad)"/>
-  <!-- Hairline ring gives the badge a clean edge -->
-  <circle cx="200" cy="200" r="186" fill="none" stroke="#1A3050" stroke-width="1.5"/>
+  <!-- Cyan accent ring ties badge to design system accent color -->
+  <circle cx="200" cy="200" r="186" fill="none" stroke="#0EA5E9" stroke-width="1.5" opacity="0.35"/>
 
   <!-- ── Snake (clipped to badge circle) ──────────────────────────── -->
   <g clip-path="url(#circle-clip)">
@@ -106,7 +106,7 @@
   <circle
     cx="200" cy="200" r="190"
     fill="none"
-    stroke="#050B18"
+    stroke="#030D1A"
     stroke-width="12"
     opacity="0.35"
   />

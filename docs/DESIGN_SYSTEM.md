@@ -5,21 +5,26 @@ IshVenom is a life-saving medical tool, not a toy. The design must feel
 trustworthy, calm under pressure, and accessible to community health
 workers with limited tech literacy.
 
+**Accent rationale:** `#0EA5E9` (sky-500 cyan) is the accent color.
+Cyan carries 70 years of global health org association (WHO, MSF, UNICEF)
+and reads as clinical rather than tech-purple — the right signal for a
+triage tool used in the field.
+
 ## Color Palette
 
 ### Dark Mode (default)
 | Token | Hex | Usage |
 |---|---|---|
-| `bg-primary` | `#0F0D15` | App background |
-| `bg-surface` | `#1A1725` | Cards, panels, modals |
-| `bg-surface-hover` | `#252236` | Hover/pressed states |
-| `border-default` | `#2E2B3A` | Card borders, dividers |
-| `text-primary` | `#F5F3FF` | Headings, body text |
-| `text-secondary` | `#A8A3B8` | Captions, metadata |
-| `text-muted` | `#6B6580` | Placeholders, disabled |
-| `accent-primary` | `#7C5AFF` | Primary buttons, links, active states |
-| `accent-primary-hover` | `#6B4AE0` | Button hover |
-| `accent-secondary` | `#A88BFA` | Secondary highlights, badges |
+| `bg-primary` | `#080C12` | App background |
+| `bg-surface` | `#0F172A` | Cards, panels, modals |
+| `bg-surface-hover` | `#1E293B` | Hover/pressed states |
+| `border-default` | `#1E293B` | Card borders, dividers |
+| `text-primary` | `#F0F9FF` | Headings, body text |
+| `text-secondary` | `#94A3B8` | Captions, metadata |
+| `text-muted` | `#64748B` | Placeholders, disabled |
+| `accent-primary` | `#0EA5E9` | Primary buttons, links, active states |
+| `accent-primary-hover` | `#0284C7` | Button hover |
+| `accent-secondary` | `#7DD3FC` | Secondary highlights, badges |
 | `danger` | `#EF4444` | Venomous badges, emergency, errors |
 | `danger-surface` | `#2D1214` | Danger card backgrounds |
 | `warning` | `#F59E0B` | Generating states, caution badges |
@@ -30,16 +35,16 @@ workers with limited tech literacy.
 ### Light Mode
 | Token | Hex | Usage |
 |---|---|---|
-| `bg-primary` | `#FAFAFE` | App background |
+| `bg-primary` | `#F8FAFC` | App background |
 | `bg-surface` | `#FFFFFF` | Cards, panels, modals |
-| `bg-surface-hover` | `#F3F1F9` | Hover/pressed states |
-| `border-default` | `#E4E1EE` | Card borders, dividers |
-| `text-primary` | `#1A1725` | Headings, body text |
-| `text-secondary` | `#6B6580` | Captions, metadata |
-| `text-muted` | `#A8A3B8` | Placeholders, disabled |
-| `accent-primary` | `#7C5AFF` | Same across both themes |
-| `accent-primary-hover` | `#6B4AE0` | Same across both themes |
-| `accent-secondary` | `#A88BFA` | Same across both themes |
+| `bg-surface-hover` | `#F1F5F9` | Hover/pressed states |
+| `border-default` | `#E2E8F0` | Card borders, dividers |
+| `text-primary` | `#0F172A` | Headings, body text |
+| `text-secondary` | `#64748B` | Captions, metadata |
+| `text-muted` | `#94A3B8` | Placeholders, disabled |
+| `accent-primary` | `#0EA5E9` | Same across both themes |
+| `accent-primary-hover` | `#0284C7` | Same across both themes |
+| `accent-secondary` | `#7DD3FC` | Same across both themes |
 | `danger` | `#DC2626` | Slightly darker for light bg |
 | `warning` | `#D97706` | Slightly darker for light bg |
 | `success` | `#059669` | Slightly darker for light bg |
