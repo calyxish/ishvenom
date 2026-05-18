@@ -6,6 +6,7 @@
  */
 
 const TOKEN_KEY = 'ishvenom:token';
+const EMAIL_KEY = 'ishvenom:email';
 
 /**
  * Normalize the API base so that any of the following env values all resolve
@@ -38,6 +39,17 @@ export function setToken(token: string): void {
 export function clearToken(): void {
   if (typeof window === 'undefined') return;
   window.localStorage.removeItem(TOKEN_KEY);
+  window.localStorage.removeItem(EMAIL_KEY);
+}
+
+export function getUserEmail(): string | null {
+  if (typeof window === 'undefined') return null;
+  return window.localStorage.getItem(EMAIL_KEY);
+}
+
+export function setUserEmail(email: string): void {
+  if (typeof window === 'undefined') return;
+  window.localStorage.setItem(EMAIL_KEY, email);
 }
 
 export class ApiError extends Error {
@@ -107,6 +119,7 @@ export async function login(
     { auth: false },
   );
   setToken(body.token);
+  setUserEmail(body.user.email);
   return body;
 }
 

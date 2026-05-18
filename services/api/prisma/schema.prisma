@@ -90,23 +90,26 @@ model Encounter {
 }
 
 model SitReport {
+  // The hand-written migration created this table with snake_case names —
+  // map every field so the Prisma client emits the correct column names.
   id               String   @id @default(uuid()) @db.Uuid
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
-  createdByUserId  String   @db.Uuid
-  scopeCountry     String   @db.Char(2)
-  scopeDistrict    String?
-  scopeSince       DateTime
-  scopeUntil       DateTime
+  createdAt        DateTime @default(now())                 @map("created_at")
+  updatedAt        DateTime @updatedAt                      @map("updated_at")
+  createdByUserId  String   @db.Uuid                         @map("created_by_user_id")
+  scopeCountry     String   @db.Char(2)                      @map("scope_country")
+  scopeDistrict    String?                                   @map("scope_district")
+  scopeSince       DateTime                                  @map("scope_since")
+  scopeUntil       DateTime                                  @map("scope_until")
   status           String   // pending | generating | ready | failed
   model            String
   markdown         String?
   structured       Json?
   error            String?
-  promptTokens     Int?
-  completionTokens Int?
-  latencyMs        Int?
+  promptTokens     Int?                                      @map("prompt_tokens")
+  completionTokens Int?                                      @map("completion_tokens")
+  latencyMs        Int?                                      @map("latency_ms")
 
+  @@map("sit_reports")
   @@index([createdByUserId])
   @@index([scopeCountry, scopeDistrict])
   @@index([createdAt])
