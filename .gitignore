@@ -20,10 +20,11 @@ pnpm-debug.log*
 !.env.example
 
 # ── Data (large datasets live on HuggingFace / Kaggle) ──────────────
-data/
-# Exception: the small processed SFT corpus is worth keeping in git
-!data/processed/
-!data/processed/corpus/
+# Ignore raw and split datasets; keep the processed SFT corpus in git.
+# Note: ignoring data/ entirely blocks negations for subdirs, so we
+# ignore specific subdirs instead.
+data/raw/
+data/splits/
 # Exception: bundled reference data for the mobile app (species, antivenom centers)
 !apps/mobile/assets/data/
 
