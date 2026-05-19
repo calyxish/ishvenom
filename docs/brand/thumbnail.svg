@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 280" width="560" height="280" role="img" aria-label="IshVenom — Snakebite triage powered by Gemma 4">
+  <defs>
+    <!-- Card background: same dark navy as the dashboard's bg-primary token -->
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#080C12"/>
+    </linearGradient>
+
+    <!-- Logo internals (re-used from docs/logo.svg) -->
+    <radialGradient id="badgeBg" cx="38%" cy="32%" r="70%">
+      <stop offset="0%"   stop-color="#061E38"/>
+      <stop offset="100%" stop-color="#030D1A"/>
+    </radialGradient>
+    <linearGradient id="snakeGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#047857"/>
+      <stop offset="55%"  stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <clipPath id="badgeClip">
+      <circle cx="120" cy="140" r="93"/>
+    </clipPath>
+  </defs>
+
+  <!-- Card background -->
+  <rect width="560" height="280" fill="url(#cardBg)"/>
+
+  <!-- Cyan accent stripe down the right edge (matches design-system accent) -->
+  <rect x="556" y="0" width="4" height="280" fill="#0EA5E9" opacity="0.6"/>
+
+  <!-- ── Logo badge (left), centered vertically; scaled from 400→190 ── -->
+  <g transform="translate(25, 45)">
+    <!-- Translate-then-scale instead of one matrix — easier to read -->
+    <g transform="scale(0.475)">
+      <circle cx="200" cy="200" r="190" fill="url(#badgeBg)"/>
+      <circle cx="200" cy="200" r="186" fill="none"
+              stroke="#0EA5E9" stroke-width="1.5" opacity="0.35"/>
+
+      <g clip-path="url(#badgeClip-inner)">
+        <path d="M 88 312 C 42 268, 52 178, 125 158 C 198 138, 290 172, 314 98"
+              fill="none" stroke="#011008" stroke-width="32"
+              stroke-linecap="round" opacity="0.55"/>
+        <path d="M 88 308 C 44 264, 52 176, 124 156 C 196 136, 288 170, 312 96"
+              fill="none" stroke="url(#snakeGrad)" stroke-width="25"
+              stroke-linecap="round"/>
+        <path d="M 88 308 C 44 264, 52 176, 124 156 C 196 136, 288 170, 312 96"
+              fill="none" stroke="#6EE7B7" stroke-width="9"
+              stroke-linecap="round" opacity="0.18"/>
+        <polygon points="315,84 297,91 327,101" fill="#034d30" opacity="0.50"/>
+        <polygon points="321,69 297,91 327,101" fill="url(#snakeGrad)"/>
+        <circle cx="311"   cy="85"   r="5.5" fill="#010C06"/>
+        <circle cx="312.5" cy="83.5" r="2"   fill="#A7F3D0" opacity="0.65"/>
+        <path d="M 321 69 L 325 55 M 325 55 L 318 45 M 325 55 L 334 50"
+              fill="none" stroke="#047857" stroke-width="2.8"
+              stroke-linecap="round"/>
+      </g>
+
+      <circle cx="200" cy="200" r="190" fill="none"
+              stroke="#030D1A" stroke-width="12" opacity="0.35"/>
+    </g>
+
+    <!-- Clip path needs to live where the geometry is, scaled accordingly -->
+    <clipPath id="badgeClip-inner">
+      <circle cx="200" cy="200" r="186"/>
+    </clipPath>
+  </g>
+
+  <!-- ── Right column: title + subtitle + footer ─────────────────────── -->
+
+  <!-- Brand name -->
+  <text x="225" y="115"
+        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+        font-size="46" font-weight="800" letter-spacing="-1"
+        fill="#F0F9FF">IshVenom</text>
+
+  <!-- Tagline -->
+  <text x="226" y="148"
+        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+        font-size="15" font-weight="500"
+        fill="#7DD3FC">Snakebite triage · 6 languages · powered by Gemma 4</text>
+
+  <!-- Body / supporting line -->
+  <text x="226" y="175"
+        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+        font-size="12" font-weight="400"
+        fill="#94A3B8">Real-time biological intelligence for WHO and</text>
+  <text x="226" y="193"
+        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+        font-size="12" font-weight="400"
+        fill="#94A3B8">community health workers across sub-Saharan Africa.</text>
+
+  <!-- Hackathon badge bottom-right -->
+  <g>
+    <rect x="226" y="222" width="166" height="26" rx="8" ry="8"
+          fill="#0EA5E9" opacity="0.12"/>
+    <rect x="226" y="222" width="166" height="26" rx="8" ry="8"
+          fill="none" stroke="#0EA5E9" stroke-width="1" opacity="0.55"/>
+    <text x="237" y="240"
+          font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+          font-size="11" font-weight="700" letter-spacing="0.5"
+          fill="#0EA5E9">GEMMA 4 GOOD HACKATHON</text>
+  </g>
+</svg>

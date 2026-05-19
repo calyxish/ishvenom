@@ -25,6 +25,7 @@ pnpm-debug.log*
 # ignore specific subdirs instead.
 data/raw/
 data/splits/
+data/processed/splits/
 # Exception: bundled reference data for the mobile app (species, antivenom centers)
 !apps/mobile/assets/data/
 
